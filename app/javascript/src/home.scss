@@ -53,6 +53,13 @@ body {
   .overlay {
     top: 0;
     background-color: rgba(238, 238, 238, 0.5);
+    z-index: 1;
+  }
+
+  .dark-overlay {
+    top: 0;
+    background-color: rgba(60, 59, 54, 0.7);
+    z-index: 3;
   }
 
   .hero-title {
@@ -65,12 +72,72 @@ body {
     color: #fff;
     background-color: #deb62f;
     border-color: #deb62f;
-  };
+  }
 
   .btn-find-food:hover {
     color: #fff;
     background-color: purple;
-  };
+  }
+
+  .btn-sign-up {
+    color: #fff;
+    background-color: #3c3b36;
+    border-color: #3c3b36;
+    width: 120px;
+  }
+
+  .btn-log-in {
+    color: #3c3b36;
+    background-color: #fff;
+    border-color: #3c3b36;
+    width: 120px;
+  }
+
+  #navbar {
+    z-index: 2;
+    height: 80px;
+  }
+  
+  #navbarMenuToggler {
+    color: rgb(255, 90, 95);
+    transition: color 0.25s;
+    z-index: 2;
+  }
+  
+  #navbarMenuToggler.collapsed {
+    color: #fff;
+  }
+  
+  #navbarMenuToggler, #navbarMenu .nav-link {
+    color: #333;
+  }
+  
+  #navbarMenu {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 88px;
+  }
+  
+  #navbarMenu .nav-link {
+    padding: 12px 0;
+    font-weight: 300;
+  }
+
+  .hamburger-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 270px;
+    height: 100vh;
+    // max-height: calc(100vh - 32px);
+    background-color: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, .04);
+    text-align: left;
+    z-index: 99;
+    overflow-y: auto;
+  }
 
 
 /* ----------------------- */

@@ -8,14 +8,101 @@ import './home.scss';
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
-// import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 
 class Layout extends React.Component  {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showHamburgerMenu: false,
+    }
+  }
+
+  showHamburgerMenuFunc = () => {
+    const overlayEl = document.querySelector('.overlay')
+    if (!this.state.showSearchResults) {
+      overlayEl.classList.replace('overlay', 'dark-overlay')
+    } else {
+      overlayEl.classList.replace('dark-overlay', 'overlay')
+    }
+    this.setState({ showHamburgerMenu: !this.state.showHamburgerMenu })
+  }
+
 
   render () {
+    const { showHamburgerMenu } = this.state;
 
     return (
       <React.Fragment>
+
+        {/* 
+        =====================================================
+				  Nav bar
+			  ===================================================== 
+        */}
+        <nav className="navbar navbar-expand-xl position-absolute w-100 pl-40 pr-40" id="navbar">
+
+          {/* <!-- nav for xl screens --> */}
+          <div className="d-none d-xl-flex flex-grow-1" id="xlNavbar"> 
+          <a href="#" onClick={this.showHamburgerMenuFunc}>
+          <FontAwesomeIcon icon={faBars} size="xl" className="mr-20" />
+          </a>
+
+          {(showHamburgerMenu)
+            ? (<div className="hamburger-menu">
+                <ul className=" mt-20 mb-20">
+                  <li>
+                    <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="#" role="button">
+                      Sign up
+                    </a>
+                  </li>
+                  <li>
+                    <a className="btn btn-log-in pt-10 pb-10 mb-20" href="#" role="button">
+                      <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
+                      Log in
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="d-flex mb-20">
+                      Create a business account
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="d-flex mb-20">
+                      Add your restaurant
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="d-flex mb-20">
+                      Sign up to deliver
+                    </a>
+                  </li>
+                </ul>
+              </div>)
+
+            : (<div></div>)
+          }
+
+
+            <a className="navbar-brand py-auto pr-0 pl-2" href="#">
+              <h3 className="m-0">Super <b>Eats</b></h3>
+            </a>
+
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item">
+                <a className="btn btn-log-in pt-10 pb-10 mr-20" href="#" role="button">
+                  <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
+                  Log in
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="btn btn-sign-up pt-10 pb-10" href="#" role="button">
+                  Sign up
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
         {/* <div className="content">
           {this.props.children}
