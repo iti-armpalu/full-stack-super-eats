@@ -58,7 +58,7 @@ class LoginWidget extends React.Component {
           <form>
             <input name="email" type="text" className="form-control mb-15" placeholder="Email" value={email} onChange={this.handleChange} required />
             <input name="password" type="password" className="form-control mb-30" placeholder="Password" value={password} onChange={this.handleChange} required />
-            <button type="submit" className="btn btn-login d-block mx-auto">
+            <button type="submit" className="btn btn-login-signup d-block mx-auto">
               Log in
             </button>
             {error && <p className="text-danger mt-2">{error}</p>}

@@ -79,16 +79,36 @@ class SignupWidget extends React.Component {
       <React.Fragment>
         {/* <form onSubmit={this.signup}> */}
 
-        <form>
-          <input name="username" type="text" className="form-control form-control-lg mb-3" placeholder="Username" value={username} onChange={this.handleChange} required />
-          <input name="email" type="text" className="form-control form-control-lg mb-3" placeholder="Email" value={email} onChange={this.handleChange} required />
-          <input name="password" type="password" className="form-control form-control-lg mb-3" placeholder="Password" value={password} onChange={this.handleChange} required />
-          <button type="submit" className="btn btn-danger btn-block btn-lg">
-            Sign up
-          </button>
-        </form>
-        <hr/>
-        <p className="mb-0">Already have an account? <a className="text-primary" onClick={this.props.toggle}>Log in</a></p>
+        <div className="text-center mb-40">
+          <h2>Sign up</h2>
+          <p>Sign up and start ordering. Say no to hunger.</p>
+        </div>
+
+        <div className="bg-login rounded pt-40 pb-40 pl-40 pr-40 mx-auto">
+          <form>
+            <div className="d-flex ">
+              <input name="first-name" type="text" className="form-control mb-15 mr-5" placeholder="First name" required />
+              <input name="last-name" type="text" className="form-control mb-15 ml-5" placeholder="Last name" required />
+            </div>
+            <input name="email" type="text" className="form-control mb-15" placeholder="Email" value={email} onChange={this.handleChange} required />
+            <input name="password" type="password" className="form-control mb-15" placeholder="Password" value={password} onChange={this.handleChange} required />
+            <div className="mt-30 mb-30">
+              <p className="mb-5">Set up your address and you are're good to go!</p>
+              <input name="address" type="ptext" className="form-control" placeholder="Address" required />
+            </div>
+
+            <button type="submit" className="btn btn-login-signup d-block mx-auto">
+              Sign up
+            </button>
+            {error && <p className="text-danger mt-2">{error}</p>}
+          </form>
+        </div>
+
+        <p className="text-center mt-40 mb-20">Already have a Super Eats account? 
+          <a className="ml-5 text-decoration-underline" onClick={this.props.toggle}>
+            Log in
+          </a>
+        </p>
       </React.Fragment>
     )
   }
