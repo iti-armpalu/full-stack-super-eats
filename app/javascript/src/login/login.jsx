@@ -5,8 +5,6 @@ import Layout from '@src/layout';
 import LoginWidget from './loginWidget';
 import SignupWidget from './signupWidget';
 
-
-
 // Importing stylesheet
 import './login.scss';
 
