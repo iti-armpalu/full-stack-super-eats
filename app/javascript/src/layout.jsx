@@ -44,8 +44,8 @@ class Layout extends React.Component  {
 
           {/* <!-- nav for xl screens --> */}
           <div className="d-none d-xl-flex flex-grow-1" id="xlNavbar"> 
-          <a href="#" onClick={this.showHamburgerMenuFunc}>
-          <FontAwesomeIcon icon={faBars} size="xl" className="mr-20" />
+          <a href="#" className="my-auto mr-20" onClick={this.showHamburgerMenuFunc}>
+          <FontAwesomeIcon icon={faBars} size="xl" />
           </a>
 
           {(showHamburgerMenu)

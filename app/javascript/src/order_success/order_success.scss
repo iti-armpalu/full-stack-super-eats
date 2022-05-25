@@ -1,0 +1,42 @@
+.icon-location-dot {
+  color: #867de9 !important;
+}
+
+.order-delivery-address {
+  color: #8f8e88;
+}
+.icon-circle {
+  color: #e8e7e9;
+}
+
+.icon-call-circle {
+  color: #f5d158;
+}
+
+.icon-phone {
+  color: #fff;
+}
+
+.order-restaurant-name {
+  color: #f5d158;
+}
+
+.btn-order-history {
+  color: #fff;
+  background-color: #deb62f;
+  border-color: #deb62f;
+  width: 200px;
+}
+
+.mapouter .gmap_iframe,
+.map-area-one .mapouter,
+.mapouter .gmap_canvas {
+  height: 100%; 
+  width: 100%;
+}
+
+.map-area-one {
+  width: 100%; 
+  border-radius: 30px; 
+  overflow: hidden;
+}
