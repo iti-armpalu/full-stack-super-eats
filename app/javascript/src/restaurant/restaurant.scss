@@ -1,0 +1,27 @@
+.restaurant-delivery-time {
+  top: 10px;
+  left: 10px;
+  background-color: rgba($color: #fff, $alpha: 0.5);
+}
+
+.restaurant-details {
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba($color: #fff, $alpha: 0.7);
+}
+
+.restaurant-image {
+  padding-top: calc(1 / 3 * 100%); /* aspect ratio 3:2 */
+  background-position: center;
+  background-size: cover;
+}
+
+.food-image {
+  padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
+  background-position: center;
+  background-size: cover;
+}
+
+.food-price {
+  color: #deb62f;
+}

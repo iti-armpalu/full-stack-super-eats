@@ -24,7 +24,7 @@ const Home = () => (
          <div className="pb-40">
         <div id="hero" className="position-relative bg-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1543353071-873f17a7a088?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070)` }}>
           
-            <div class="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center overlay">
+            <div className="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center overlay">
                 <h1 className="hero-title mb-20">Order food to your door</h1>
                 <p className="mb-60"><a href="" className="text-decoration-underline">Sign in</a> for your recent addresses</p>
                 <a className="btn btn-find-food text-uppercase pl-30 pr-30 pt-10 pb-10" href="#" role="button">Find food</a>
