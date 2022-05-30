@@ -52,7 +52,7 @@ class Layout extends React.Component  {
             ? (<div className="hamburger-menu">
                 <ul className=" mt-20 mb-20">
                   <li>
-                    <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="#" role="button">
+                    <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="/login" role="button">
                       Sign up
                     </a>
                   </li>
@@ -63,7 +63,7 @@ class Layout extends React.Component  {
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="d-flex mb-20">
+                    <a href="/business/login" className="d-flex mb-20">
                       Create a business account
                     </a>
                   </li>
@@ -84,19 +84,19 @@ class Layout extends React.Component  {
           }
 
 
-            <a className="navbar-brand py-auto pr-0 pl-2" href="#">
+            <a className="navbar-brand py-auto pr-0 pl-2" href="/">
               <h3 className="m-0">Super <b>Eats</b></h3>
             </a>
 
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="btn btn-log-in pt-10 pb-10 mr-20" href="#" role="button">
+                <a className="btn btn-log-in pt-10 pb-10 mr-20" href="/login" role="button">
                   <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
                   Log in
                 </a>
               </li>
               <li className="nav-item">
-                <a className="btn btn-sign-up pt-10 pb-10" href="#" role="button">
+                <a className="btn btn-sign-up pt-10 pb-10" href="/login" role="button">
                   Sign up
                 </a>
               </li>

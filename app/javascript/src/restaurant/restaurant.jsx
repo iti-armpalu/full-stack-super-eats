@@ -199,6 +199,10 @@ class Restaurant extends React.Component {
                     <h4 className="total-price mb-0">USD {this.updateTotal()}.00</h4>
                   </div>
                 </div>
+                <div className="d-flex justify-content-center align-items-center">
+                  <a className="btn btn-find-food text-uppercase pl-30 pr-30 pt-10 pb-10 mx-auto" href="/order/id/success" role="button">Place order</a>
+                </div>
+                
 
               </div>
                 </div>

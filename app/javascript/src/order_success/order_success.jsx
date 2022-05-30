@@ -96,7 +96,7 @@ class OrderSuccess extends React.Component {
                   </div>
                   <div className="border-top pt-40 pb-10">
                     <p>You can always view your order details in your order history:</p>
-                    <a className="btn btn-order-history" href="#" role="button">
+                    <a className="btn btn-order-history" href="/username/orders" role="button">
                       View order history
                     </a>
                   </div>

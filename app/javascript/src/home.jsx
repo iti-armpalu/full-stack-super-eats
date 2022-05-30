@@ -26,8 +26,8 @@ const Home = () => (
           
             <div className="position-absolute w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center overlay">
                 <h1 className="hero-title mb-20">Order food to your door</h1>
-                <p className="mb-60"><a href="" className="text-decoration-underline">Sign in</a> for your recent addresses</p>
-                <a className="btn btn-find-food text-uppercase pl-30 pr-30 pt-10 pb-10" href="#" role="button">Find food</a>
+                <p className="mb-60"><a href="/login" className="text-decoration-underline">Sign in</a> for your recent addresses</p>
+                <a className="btn btn-find-food text-uppercase pl-30 pr-30 pt-10 pb-10" href="/restaurants" role="button">Find food</a>
        
           </div>
         </div>
@@ -49,12 +49,12 @@ const Home = () => (
               <div className="col-6 col-lg-4">
                   <div className="property-image mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1652862730746-93fcd0da61ae?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHJlc3RhdXJhbnQlMjB0YWtlYXdheXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800)` }} />
                   <h5 className="mb-0">Your restaurant, delivered</h5>
-                  <a href="#" className="text-decoration-underline">Add your restaurant</a>
+                  <a href="/business/login" className="text-decoration-underline">Create a business account</a>
               </div>
               <div className="col-6 col-lg-4">
                   <div className="property-image mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1621503236463-3d812b12ea22?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} />
                   <h5 className="mb-0">Deliver with Super Eats</h5>
-                  <a href="#" className="text-decoration-underline">Sign up to deliver</a>
+                  <a href="#" className="text-muted text-decoration-underline" >Sign up to deliver (Coming soon)</a>
               </div>
             </div>
           </div>
