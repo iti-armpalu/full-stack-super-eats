@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get '/business/restaurants'       => 'static_pages#business_restaurants'
   get '/business/add-restaurant'    =>'static_pages#business_add_restaurant'
 
+  # Delivery partner
+  get '/delivery/login'             => 'static_pages#delivery_login'
+  get '/delivery/trips'       => 'static_pages#delivery_trips'
+
 end
