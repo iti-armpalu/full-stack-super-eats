@@ -27,10 +27,6 @@ class StaticPagesController < ApplicationController
     render 'business_login'
   end
 
-  def business_restaurants
-    render 'business_restaurants'
-  end
-
   def delivery_login
     render 'delivery_login'
   end
