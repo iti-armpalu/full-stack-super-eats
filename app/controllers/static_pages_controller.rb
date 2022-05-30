@@ -31,4 +31,8 @@ class StaticPagesController < ApplicationController
     render 'delivery_login'
   end
 
+  def delivery_trips
+    render 'delivery_trips'
+  end
+
 end
