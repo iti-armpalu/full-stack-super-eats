@@ -119,7 +119,7 @@ class DeliveryTrips extends React.Component {
                           </div>
                         </div>
                         <div className="col-2">
-                          <p className="trip-earning mb-0"><b>$ {trip.restaurant.delivery_fee}.00</b></p>
+                          <p className="trip-earning"><b>$ {trip.restaurant.delivery_fee}.00</b></p>
                         </div>
                       </div>
                     </div>
@@ -129,7 +129,7 @@ class DeliveryTrips extends React.Component {
 
               :
               <div className="border border-secondary rounded text-center">
-                <p className="py-4 mb-0">You don't have any upcoming trips at the moment.</p>
+                <p className="py-4">You don't have any upcoming trips at the moment.</p>
               </div>
             }
         

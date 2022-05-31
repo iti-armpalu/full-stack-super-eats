@@ -7,7 +7,7 @@ import './restaurant.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 class Restaurant extends React.Component {
   constructor(props) {
@@ -22,8 +22,6 @@ class Restaurant extends React.Component {
       [e.target.name]: e.target.value,
     })
   }
-
-
 
   foods = [
     {
@@ -78,12 +76,12 @@ class Restaurant extends React.Component {
           <div className="restaurant-image mb-10 rounded position-relative" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1512621776951-a57141f2eefd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} >
 
             <div className="position-absolute restaurant-delivery-time rounded pl-10 pr-10 pt-5 pb-5 my-auto">
-              <p className="mb-0">20 - 30 min</p>
+              <p>20 - 30 min</p>
             </div>
 
             <div className="position-absolute restaurant-details rounded pl-20 pr-20 pt-10 pb-10 my-auto">
               <h4 className="mb-5">Season Restaurant</h4>
-              <p className="mb-0 restaurant-address">
+              <p className="restaurant-address">
                 <FontAwesomeIcon  icon={faLocationDot} className="mr-10 icon-location-dot"  />
                 27601 Brandford, New York
               </p>
@@ -108,7 +106,7 @@ class Restaurant extends React.Component {
                     <p className="mb-20">
                     {food.description}
                     </p>
-                    <h5 className="food-price mb-0">USD {food.price}.00</h5>
+                    <h5 className="food-price">USD {food.price}.00</h5>
                   </div>
 
                   <div className="col-2 my-auto mx-auto">
@@ -127,7 +125,7 @@ class Restaurant extends React.Component {
 
             </div>
 
-            {/* If food.id user input > 0, then add to th basket */}
+            {/* If food.id user input > 0, then add to the basket */}
             <div className="mt-80 mb-40">
               <div className="row">
                 <div className="col-6">
@@ -139,64 +137,70 @@ class Restaurant extends React.Component {
 
                 <div className="row d-flex justify-content-end align-items-center text-center mb-20">
                   <div className="col">
-                    <p className="mb-0">2x</p>
+                    <p>2x</p>
                   </div>
                   <div className="col">
-                    <p className="mb-0">Aloha Bowl</p>
+                    <p>Aloha Bowl</p>
                   </div>
                   <div className="col">
                     <div className="food-image rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1604259597308-5321e8e4789c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1702)` }} />
                   </div>
                   <div className="col">
-                    <p className="food-subtotal mb-0">USD 24.00</p>
+                    <p className="food-subtotal">USD 24.00</p>
                   </div>
                   <div className="item-remove col">
-                    <button className="btn btn-danger btn-sm btn-block remove mx-auto">Remove</button>
-                    </div>
+                  <button className="btn btn-remove">
+                      <FontAwesomeIcon icon={faTrashCan} size="lg" />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="row d-flex justify-content-end align-items-center text-center mb-20">
                   <div className="col">
-                    <p className="mb-0">2x</p>
+                    <p>2x</p>
                   </div>
                   <div className="col">
-                    <p className="mb-0">Aloha Bowl</p>
+                    <p>Aloha Bowl</p>
                   </div>
                   <div className="col">
                     <div className="food-image rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1604259597308-5321e8e4789c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1702)` }} />
                   </div>
                   <div className="col">
-                    <p className="food-subtotal mb-0">USD 24.00</p>
+                    <p className="food-subtotal">USD 24.00</p>
                   </div>
                   <div className="item-remove col">
-                    <button className="btn btn-danger btn-sm btn-block remove mx-auto">Remove</button>
-                    </div>
+                  <button className="btn btn-remove">
+                      <FontAwesomeIcon icon={faTrashCan} size="lg" />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="row d-flex justify-content-end align-items-center text-center mb-20">
                   <div className="col">
-                    <p className="mb-0">2x</p>
+                    <p>2x</p>
                   </div>
                   <div className="col">
-                    <p className="mb-0">Aloha Bowl</p>
+                    <p>Aloha Bowl</p>
                   </div>
                   <div className="col">
                     <div className="food-image rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1604259597308-5321e8e4789c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1702)` }} />
                   </div>
                   <div className="col">
-                    <p className="food-subtotal mb-0">USD 24.00</p>
+                    <p className="food-subtotal">USD 24.00</p>
                   </div>
                   <div className="item-remove col">
-                    <button className="btn btn-danger btn-sm btn-block remove mx-auto">Remove</button>
-                    </div>
+                    <button className="btn btn-remove">
+                      <FontAwesomeIcon icon={faTrashCan} size="lg" />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="row d-flex justify-content-end align-items-center text-center pt-20 pb-20">
                   <div className="col">
-                    <h4 className="mb-0">Total</h4>
+                    <h4>Total</h4>
                   </div>
                   <div className="col">
-                    <h4 className="total-price mb-0">USD {this.updateTotal()}.00</h4>
+                    <h4 className="total-price">USD {this.updateTotal()}.00</h4>
                   </div>
                 </div>
                 <div className="d-flex justify-content-center align-items-center">

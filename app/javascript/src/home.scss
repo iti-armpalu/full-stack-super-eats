@@ -4,7 +4,8 @@ body {
   color: #3c3b36;
 }
 
-
+/* -------------------------- */
+/* ---- General ---- */
 
 /* Container */
 
@@ -31,132 +32,86 @@ body {
   }
 }
 
-/* ---- Home ---- */
-/* Property aspect ratio */
+/* Image aspect ratios */
 
+.aspect-ratio-rectangle {
+  padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
+  background-position: center;
+  background-size: cover;
+}
 
-  .property-image {
-    padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
-    background-position: center;
-    background-size: cover;
-  }
+/* -------------------------- */
+/* ---- Layout Component ---- */
 
-  .bg-image {
-    padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    min-height: 650px;
-  }
+/*  Navbar // start */
+#navbar {
+  z-index: 2;
+  height: 80px;
+}
 
-  .overlay {
-    top: 0;
-    background-color: rgba(238, 238, 238, 0.5);
-    z-index: 1;
-  }
+#navbarMenu {
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 88px;
+}
 
-  .dark-overlay {
-    top: 0;
-    background-color: rgba(60, 59, 54, 0.7);
-    z-index: 3;
-  }
+#navbarMenu .nav-link {
+  padding: 12px 0;
+  font-weight: 300;
+}
 
-  .hero-title {
-    font-size: 90px;
-    line-height: 90px;
-    width: 40%;
-  }
+.hamburger-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 270px;
+  height: 100vh;
+  // max-height: calc(100vh - 32px);
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, .04);
+  text-align: left;
+  z-index: 99;
+  overflow-y: auto;
+}
 
-  .btn-find-food {
-    color: #fff;
-    background-color: #deb62f;
-    border-color: #deb62f;
-  }
+.btn-log-in {
+  color: #3c3b36;
+  background-color: #fff;
+  border-color: #3c3b36;
+  border-radius: 50px;
+  width: 120px;
+}
+.btn-log-in:hover {
+  color: #3c3b36;
+  background-color: #fff;
+  border-color: #3c3b36;
+  border-radius: 50px;
+  width: 120px;
+}
 
-  .btn-find-food:hover {
-    color: #fff;
-    background-color: purple;
-  }
+.btn-sign-up {
+  color: #fff;
+  background-color: #3c3b36;
+  border-color: #3c3b36;
+  border-radius: 50px;
+  width: 120px;
+}
 
-  .btn-sign-up {
-    color: #fff;
-    background-color: #3c3b36;
-    border-color: #3c3b36;
-    width: 120px;
-  }
+.btn-sign-up:hover {
+  color: #fff;
+  background-color: #3c3b36;
+}
+/*  Navbar // end */
 
-  .btn-log-in {
-    color: #3c3b36;
-    background-color: #fff;
-    border-color: #3c3b36;
-    width: 120px;
-  }
-
-  #navbar {
-    z-index: 2;
-    height: 80px;
-  }
-  
-  #navbarMenuToggler {
-    color: rgb(255, 90, 95);
-    transition: color 0.25s;
-    z-index: 2;
-  }
-  
-  #navbarMenuToggler.collapsed {
-    color: #fff;
-  }
-  
-  #navbarMenuToggler, #navbarMenu .nav-link {
-    color: #333;
-  }
-  
-  #navbarMenu {
-    top: 0;
-    left: 0;
-    right: 0;
-    padding-top: 88px;
-  }
-  
-  #navbarMenu .nav-link {
-    padding: 12px 0;
-    font-weight: 300;
-  }
-
-  .hamburger-menu {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 270px;
-    height: 100vh;
-    // max-height: calc(100vh - 32px);
-    background-color: #fff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, .04);
-    text-align: left;
-    z-index: 99;
-    overflow-y: auto;
-  }
-
-  .country-list li a:hover {
-    color: #3c3b36;
-    text-decoration: underline;
-  }
-
-
-
-
-/* ----------------------- */
-
-/* Content */
-
+/*  Children // start */
 .content {
   min-height: calc(100vh - 112px);
 }
+/*  Children // end */
 
-/* ---- Footer CSS ----- */
-
+/*  Footer // start */
 #footer {
   color: #3c3b36;
   border-top: 1px solid #e2e2e2;
@@ -177,12 +132,67 @@ height: 40px;
   color: #3c3b36;
   text-decoration: underline;
 }
+/*  Footer // end */
 
+
+/* -------------------------- */
+/* ---- Home Component ---- */
+
+/*  Hero content // start */
+.bg-image {
+  padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  min-height: 650px;
+}
+
+.overlay {
+  top: 0;
+  background-color: rgba(238, 238, 238, 0.5);
+  z-index: 1;
+}
+
+.dark-overlay {
+  top: 0;
+  background-color: rgba(60, 59, 54, 0.7);
+  z-index: 3;
+}
+
+.hero-title {
+  font-size: 90px;
+  line-height: 90px;
+  width: 40%;
+}
+
+.btn-find-food {
+  color: #fff;
+  background-color: #F5D158;
+  border-radius: 50px;
+}
+
+.btn-find-food:hover {
+  color: #fff;
+  background-color: #deb62f;
+}
+/*  Hero content // end */
+
+/*  Countries with Super Eats // start */
+.country-list li a:hover {
+  color: #3c3b36;
+  text-decoration: underline;
+}
+/*  Countries with Super Eats // end */
+
+
+/* ------------------------ */
 /* ---- Framework CSS ----- */
 
 *{margin:0;padding:0;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+h1, h2, h3, h4, h5, h6, p, ul {margin-bottom: 0;}
 a {text-decoration: none; display: inline-block; color: inherit;}
-a:hover,a:focus,a:visited {text-decoration: none; outline: none;}
+a:hover,a:focus {color: #3c3b36; text-decoration: none; outline: none;}
 img {max-width: 100%; display: block;}
 ul {list-style: none;}
 button {border:none;outline: none;box-shadow: none;display: block; padding: 0;cursor: pointer;background: transparent;}

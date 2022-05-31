@@ -1,11 +1,10 @@
 // layout.js
 import React from 'react';
 
-
-// Import stylesheet
+// Importing stylesheet
 import './home.scss';
 
-// Import FontAwesome
+// Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -34,7 +33,6 @@ class Layout extends React.Component  {
 
     return (
       <React.Fragment>
-
         {/* 
         =====================================================
 				  Nav bar
@@ -49,7 +47,8 @@ class Layout extends React.Component  {
           </a>
 
           {(showHamburgerMenu)
-            ? (<div className="hamburger-menu">
+            ? 
+              (<div className="hamburger-menu">
                 <ul className=" mt-20 mb-20">
                   <li>
                     <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="/login" role="button">
@@ -63,17 +62,17 @@ class Layout extends React.Component  {
                     </a>
                   </li>
                   <li>
-                    <a href="/business/login" className="d-flex mb-20">
-                      Create a business account
+                    <a href="#" className="text-muted d-flex mb-20">
+                      Create a business account (Coming soon)
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="d-flex mb-20">
-                      Add your restaurant
+                    <a href="#" className="text-muted d-flex mb-20">
+                      Add your restaurant (Coming soon)
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="d-flex mb-20">
+                    <a href="/delivery/login" className="d-flex mb-20">
                       Sign up to deliver
                     </a>
                   </li>
@@ -82,7 +81,6 @@ class Layout extends React.Component  {
 
             : (<div></div>)
           }
-
 
             <a className="navbar-brand py-auto pr-0 pl-2" href="/">
               <h3 className="m-0">Super <b>Eats</b></h3>
@@ -121,10 +119,8 @@ class Layout extends React.Component  {
         */}
         <footer id="footer" className="mt-80 pt-70 pb-70">
           <div className="pl-40 pr-40">
-
             <div className="row gx-0">
               <div className="col-12 col-md-6 mb-40">
-
                 <div className="d-flex flex-column align-content-between">
                   <h2 className="mb-40">Super <b>Eats</b></h2>
                   <div className="d-flex flex-row">
@@ -137,9 +133,8 @@ class Layout extends React.Component  {
                   </div>
                 </div>
               </div>
-
               <div className="col-12 col-md-3">
-                <ul className="footer-column d-md-block p-0 mb-0 ml-10">
+                <ul className="footer-column d-md-block p-0 ml-10">
                   <li>
                     <a href="#" className="d-flex mb-15">Get help</a>
                   </li>
@@ -160,9 +155,8 @@ class Layout extends React.Component  {
                   </li>
                 </ul>
               </div>
-
               <div className="col-12 col-md-3">
-                <ul className="footer-column d-md-block p-0 mb-0 ml-10">
+                <ul className="footer-column d-md-block p-0 ml-10">
                   <li>
                     <a href="#" className="d-flex mb-15">Restaurants near me</a>
                   </li>
@@ -178,9 +172,7 @@ class Layout extends React.Component  {
                 </ul>
               </div>
             </div>
-
             <div className="divider mt-40 mb-40"></div>
-
             <div className="row gx-0 justify-content-between">
               <div className="col-12 col-xl-auto order-2 order-xl-1">
                   <div className="d-xl-flex text-left text-md-center">
@@ -215,7 +207,6 @@ class Layout extends React.Component  {
                 </div>
               </div>
             </div>
-
           </div>
         </footer>
       </React.Fragment>

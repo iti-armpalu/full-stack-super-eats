@@ -58,11 +58,14 @@ class DeliveryLoginWidget extends React.Component {
           <form>
             <input name="email" type="text" className="form-control mb-15" placeholder="Email" value={email} onChange={this.handleChange} required />
             <input name="password" type="password" className="form-control mb-30" placeholder="Password" value={password} onChange={this.handleChange} required />
-            <button type="submit" className="btn btn-login-signup d-block mx-auto">
+            {/* <button type="submit" className="btn btn-login-signup d-block mx-auto">
               Log in
-            </button>
+            </button> */}
             {error && <p className="text-danger mt-2">{error}</p>}
           </form>
+          <a className="btn btn-delivery-login text-uppercase mt-20 mb-20" href="/delivery/trips" role="button">
+              Login (temporary)
+          </a>
 
         </div>
 

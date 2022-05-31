@@ -5,7 +5,23 @@
 
 .btn-login-signup {
   color: #fff;
-  background-color: #deb62f;
-  border-color: #deb62f;
+  background-color: #f5d158;
+  border-radius: 50px;
   width: 120px;
+}
+
+.btn-login-signup:hover {
+  color: #fff;
+  background-color: #deb62f;
+}
+
+.btn-delivery-login {
+  color: #fff;
+  background-color: #f5d158;
+  border-radius: 50px;
+}
+
+.btn-delivery-login:hover {
+  color: #fff;
+  background-color: #deb62f;
 }

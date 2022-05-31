@@ -4,7 +4,8 @@ import Layout from '@src/layout';
 
 // Importing stylesheet
 import './order_success.scss';
-// Import FontAwesome
+
+// Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faCircle, faClock, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
@@ -96,7 +97,7 @@ class OrderSuccess extends React.Component {
                   </div>
                   <div className="border-top pt-40 pb-10">
                     <p>You can always view your order details in your order history:</p>
-                    <a className="btn btn-order-history" href="/username/orders" role="button">
+                    <a className="btn btn-order-history text-uppercase mt-20 mb-20" href="/username/orders" role="button">
                       View order history
                     </a>
                   </div>
