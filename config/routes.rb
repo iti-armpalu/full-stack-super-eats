@@ -13,6 +13,17 @@ Rails.application.routes.draw do
 
   # Delivery partner
   get '/delivery/login'             => 'static_pages#delivery_login'
-  get '/delivery/trips'       => 'static_pages#delivery_trips'
+  get '/delivery/trips'             => 'static_pages#delivery_trips'
+
+  namespace :api do
+    # Users
+    post '/users'                   => 'users#create'
+
+    # Sessions
+    post '/sessions'                => 'sessions#create'
+    get  '/authenticated'           => 'sessions#authenticated'
+    delete '/sessions'              => 'sessions#destroy'
+  end
+
 
 end
