@@ -103,6 +103,30 @@ body {
   color: #fff;
   background-color: #3c3b36;
 }
+
+.btn-user-menu {
+  position: relative;
+}
+
+.user-menu {
+  position: absolute;
+  font-size: 14px;
+  line-height: 1.375;
+  left: 0;
+  top: 60px;
+  width: 260px;
+  max-height: calc(100vh - 32px);
+  margin: 0;
+  padding: 16px 0;
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, .04);
+  border-radius: 16px;
+  text-align: left;
+  z-index: 90;
+  overflow-y: auto;
+}
+
 /*  Navbar // end */
 
 /*  Children // start */

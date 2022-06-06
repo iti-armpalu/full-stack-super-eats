@@ -14,35 +14,35 @@ class LoginWidget extends React.Component {
     })
   }
 
-  // login = (e) => {
-  //   if (e) { e.preventDefault(); }
-  //   this.setState({
-  //     error: '',
-  //   });
+  login = (e) => {
+    if (e) { e.preventDefault(); }
+    this.setState({
+      error: '',
+    });
 
-  //   fetch('/api/sessions', safeCredentials({
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       user: {
-  //         email: this.state.email,
-  //         password: this.state.password,
-  //       }
-  //     })
-  //   }))
-  //     .then(handleErrors)
-  //     .then(data => {
-  //       if (data.success) {
-  //         const params = new URLSearchParams(window.location.search);
-  //         const redirect_url = params.get('redirect_url') || '/';
-  //         window.location = redirect_url;
-  //       }
-  //     })
-  //     .catch(error => {
-  //       this.setState({
-  //         error: 'Could not log in.',
-  //       })
-  //     })
-  // }
+    fetch('/api/sessions', safeCredentials({
+      method: 'POST',
+      body: JSON.stringify({
+        user: {
+          email: this.state.email,
+          password: this.state.password,
+        }
+      })
+    }))
+      .then(handleErrors)
+      .then(data => {
+        if (data.success) {
+          const params = new URLSearchParams(window.location.search);
+          const redirect_url = params.get('redirect_url') || '/restaurants';
+          window.location = redirect_url;
+        }
+      })
+      .catch(error => {
+        this.setState({
+          error: 'Could not log in.',
+        })
+      })
+  }
   
   render () {
     const { email, password, error } = this.state;
@@ -55,7 +55,7 @@ class LoginWidget extends React.Component {
         </div>
 
         <div className="bg-login rounded pt-40 pb-40 pl-40 pr-40 mx-auto">
-          <form>
+          <form onSubmit={this.login}>
             <input name="email" type="text" className="form-control mb-15" placeholder="Email" value={email} onChange={this.handleChange} required />
             <input name="password" type="password" className="form-control mb-30" placeholder="Password" value={password} onChange={this.handleChange} required />
             <button type="submit" className="btn btn-login-signup d-block mx-auto">

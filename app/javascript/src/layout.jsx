@@ -1,5 +1,6 @@
 // layout.js
 import React from 'react';
+import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 
 // Importing stylesheet
 import './home.scss';
@@ -7,14 +8,29 @@ import './home.scss';
 // Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 class Layout extends React.Component  {
   constructor(props) {
     super(props)
     this.state = {
+      authenticated: false,
+      first_name: '',
       showHamburgerMenu: false,
+      showUserMenu: false,
     }
+  }
+
+  componentDidMount() {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(data => {
+        console.log(data)
+        this.setState({
+          authenticated: data.authenticated,
+          first_name: data.first_name,
+        })
+      })
   }
 
   showHamburgerMenuFunc = () => {
@@ -27,9 +43,38 @@ class Layout extends React.Component  {
     this.setState({ showHamburgerMenu: !this.state.showHamburgerMenu })
   }
 
+  showUserMenuFunc = () => {
+    this.setState({ showUserMenu: !this.state.showUserMenu })
+  }
+
+  logout = (e) => {
+    e.preventDefault();
+
+    fetch('/api/sessions', safeCredentials({
+      method: 'DELETE',
+    }))
+      .then(handleErrors)
+      .then(data => {
+        // console.log('data', data)
+        if (data.success) {
+          this.setState({
+            authenticated: false,
+          })
+          const params = new URLSearchParams(window.location.search);
+          const redirect_url = params.get('redirect_url') || '/';
+          window.location = redirect_url;
+        }
+      })
+      .catch(error => {
+        this.setState({
+          error: 'Could not sign out.',
+        })
+      })
+  }
+
 
   render () {
-    const { showHamburgerMenu } = this.state;
+    const { authenticated, first_name, showHamburgerMenu, showUserMenu } = this.state;
 
     return (
       <React.Fragment>
@@ -38,49 +83,91 @@ class Layout extends React.Component  {
 				  Nav bar
 			  ===================================================== 
         */}
+        {(authenticated)
+
+        ?
         <nav className="navbar navbar-expand-xl position-relative w-100 pl-40 pr-40" id="navbar">
 
-          {/* <!-- nav for xl screens --> */}
+        {/* Nav for xl screens */}
           <div className="d-none d-xl-flex flex-grow-1" id="xlNavbar"> 
-          <a href="#" className="my-auto mr-20" onClick={this.showHamburgerMenuFunc}>
-          <FontAwesomeIcon icon={faBars} size="xl" />
-          </a>
+            <a className="navbar-brand py-auto pr-0 pl-2" href="/">
+              <h3 className="m-0">Super <b>Eats</b></h3>
+            </a>
 
-          {(showHamburgerMenu)
+            <div>
+              <button type="submit" className="btn btn-user-menu p-2 mx-2" onClick={this.showUserMenuFunc}>
+                Hello, {first_name}
+                <span className="ml-2">
+                  <FontAwesomeIcon icon={faChevronDown} />
+                </span>
+                
+                {(showUserMenu)
+                  ? (<div className="user-menu">
+                      <ul className="list-unstyled">
+                        <li><a href="#">Listings</a></li>
+                        <li><a href="#">Reservations</a></li>
+                        <li><a href="#">Add a new property</a></li>
+                        <div className="divider"></div>
+                        <li><a href="#">Guidebooks</a></li>
+                        <li><a href="#">Transaction history</a></li>
+                        <li><a href="#">Explore hosting resources</a></li>
+                        <li><a href="#">Visit our community forum</a></li>
+                      </ul>
+                      <button type="submit" className="btn btn-outline-danger btn-logout" onClick={this.logout}>Log out</button>
+                    </div>)
+
+                  : (<div></div>)
+                }
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        : 
+        <nav className="navbar navbar-expand-xl position-relative w-100 pl-40 pr-40" id="navbar">
+
+        {/* Nav for xl screens */}
+          <div className="d-none d-xl-flex flex-grow-1" id="xlNavbar"> 
+            <a href="#" className="my-auto mr-20" onClick={this.showHamburgerMenuFunc}>
+              <FontAwesomeIcon icon={faBars} size="xl" />
+            </a>
+
+            {(showHamburgerMenu)
             ? 
-              (<div className="hamburger-menu">
-                <ul className=" mt-20 mb-20">
-                  <li>
-                    <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="/login" role="button">
-                      Sign up
-                    </a>
-                  </li>
-                  <li>
-                    <a className="btn btn-log-in pt-10 pb-10 mb-20" href="/login" role="button">
-                      <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
-                      Log in
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-muted d-flex mb-20">
-                      Create a business account (Coming soon)
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-muted d-flex mb-20">
-                      Add your restaurant (Coming soon)
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/delivery/login" className="d-flex mb-20">
-                      Sign up to deliver
-                    </a>
-                  </li>
-                </ul>
-              </div>)
+            (<div className="hamburger-menu">
+              <ul className=" mt-20 mb-20">
+                <li>
+                  <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="/login" role="button">
+                    Sign up
+                  </a>
+                </li>
+                <li>
+                  <a className="btn btn-log-in pt-10 pb-10 mb-20" href="/login" role="button">
+                    <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
+                    Log in
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted d-flex mb-20">
+                    Create a business account (Coming soon)
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted d-flex mb-20">
+                    Add your restaurant (Coming soon)
+                  </a>
+                </li>
+                <li>
+                  <a href="/delivery/login" className="d-flex mb-20">
+                    Sign up to deliver
+                  </a>
+                </li>
+              </ul>
+            </div>)
 
-            : (<div></div>)
-          }
+            :
+            (<div></div>)
+            }
 
             <a className="navbar-brand py-auto pr-0 pl-2" href="/">
               <h3 className="m-0">Super <b>Eats</b></h3>
@@ -101,6 +188,7 @@ class Layout extends React.Component  {
             </ul>
           </div>
         </nav>
+        }
 
         {/* 
         =====================================================
