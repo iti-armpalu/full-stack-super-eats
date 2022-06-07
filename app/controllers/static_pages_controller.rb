@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
   end
 
   def restaurant
+    @data = { restaurant_id: params[:id] }.to_json
     render 'restaurant'
   end
 

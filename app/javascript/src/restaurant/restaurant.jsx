@@ -1,6 +1,7 @@
 // restaurant.jsx
 import React from 'react';
 import Layout from '@src/layout';
+import { handleErrors } from '@utils/fetchHelper';
 
 // Importing stylesheet
 import './restaurant.scss';
@@ -13,9 +14,28 @@ class Restaurant extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      restaurant: {},
       quantity: '',
     }
   }
+
+  componentDidMount() {
+    const restaurantId = this.props.restaurant_id;
+    console.log(restaurantId)
+
+    fetch(`/api/restaurants/${restaurantId}`)
+      .then(handleErrors)
+      .then(data => {
+        console.log('data', data)
+        console.log(process.env.STRIPE_PUBLISHABLE_KEY)
+        this.setState({
+          restaurant: data.restaurant,
+          loading: false,
+        })
+      })
+  }
+
+
 
   handleChange = (e) => {
     this.setState({
@@ -67,25 +87,25 @@ class Restaurant extends React.Component {
   }
 
   render () {
-    const { quantity } = this.state;
+    const { restaurant, quantity } = this.state;
 
   return (
     <Layout>
       <div className="mt-80 pb-40">
         <div className="pl-40 pr-40">
-          <div className="restaurant-image mb-10 rounded position-relative" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1512621776951-a57141f2eefd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} >
+          <div className="restaurant-image mb-10 rounded position-relative" style={{ backgroundImage: `url(${restaurant.image_url})` }} >
 
             <div className="position-absolute restaurant-delivery-time rounded pl-10 pr-10 pt-5 pb-5 my-auto">
-              <p>20 - 30 min</p>
+              <p>{restaurant.delivery_time}</p>
             </div>
 
             <div className="position-absolute restaurant-details rounded pl-20 pr-20 pt-10 pb-10 my-auto">
-              <h4 className="mb-5">Season Restaurant</h4>
+              <h4 className="mb-5">{restaurant.name}</h4>
               <p className="restaurant-address">
                 <FontAwesomeIcon  icon={faLocationDot} className="mr-10 icon-location-dot"  />
-                27601 Brandford, New York
+                {restaurant.address}, {restaurant.city}, {restaurant.country}
               </p>
-              <p>Open: 9:00 am - 10:00 pm </p>
+              <p>Open: {restaurant.opening_time}:00 am - {restaurant.closing_time}:00 pm </p>
             </div>
           </div>
 

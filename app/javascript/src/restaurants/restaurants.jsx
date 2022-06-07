@@ -141,7 +141,7 @@ class Restaurants extends React.Component {
               {filterRestaurant.map(restaurant => {
                 return (
                   <div key={restaurant.id} id={restaurant.id} className="col-6 col-lg-4 mb-40">
-                    <a href="/restaurant/id" className="d-block">
+                    <a href={`/restaurant/${restaurant.id}`} className="d-block">
                       <div className="aspect-ratio-rectangle mb-10 rounded position-relative" style={{ backgroundImage: `url(${restaurant.image_url})` }} >
                         <div className="position-absolute restaurant-delivery-time rounded pl-10 pr-10 pt-5 pb-5 my-auto">
                           <p>{restaurant.delivery_time} min</p>

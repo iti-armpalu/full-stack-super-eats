@@ -6,5 +6,12 @@ module Api
 
       render 'api/restaurants/index', status: :ok
     end
+
+    def show
+      @restaurant = Restaurant.find_by(id: params[:id])
+      return render json: { error: 'not_found' }, status: :not_found if !@restaurant
+      render 'api/restaurants/show', status: :ok
+    end
+    
   end
 end
