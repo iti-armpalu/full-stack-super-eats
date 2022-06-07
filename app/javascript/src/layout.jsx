@@ -94,26 +94,25 @@ class Layout extends React.Component  {
               <h3 className="m-0">Super <b>Eats</b></h3>
             </a>
 
-            <div>
-              <button type="submit" className="btn btn-user-menu p-2 mx-2" onClick={this.showUserMenuFunc}>
+            <div className="ms-auto">
+              <button type="submit" className="btn btn-user-menu pt-10 pb-10 " onClick={this.showUserMenuFunc}>
+                  <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
                 Hello, {first_name}
-                <span className="ml-2">
+                <span className="ml-10">
                   <FontAwesomeIcon icon={faChevronDown} />
                 </span>
                 
                 {(showUserMenu)
                   ? (<div className="user-menu">
                       <ul className="list-unstyled">
-                        <li><a href="#">Listings</a></li>
-                        <li><a href="#">Reservations</a></li>
-                        <li><a href="#">Add a new property</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Favourites</a></li>
                         <div className="divider"></div>
-                        <li><a href="#">Guidebooks</a></li>
-                        <li><a href="#">Transaction history</a></li>
-                        <li><a href="#">Explore hosting resources</a></li>
-                        <li><a href="#">Visit our community forum</a></li>
+                        <li><a href="#">Account</a></li>
+                        <div className="divider"></div>
+                        <li><button type="submit" className="btn btn-logout" onClick={this.logout}>Log out</button></li>
                       </ul>
-                      <button type="submit" className="btn btn-outline-danger btn-logout" onClick={this.logout}>Log out</button>
+                      
                     </div>)
 
                   : (<div></div>)

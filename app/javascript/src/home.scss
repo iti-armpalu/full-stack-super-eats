@@ -4,6 +4,11 @@ body {
   color: #3c3b36;
 }
 
+.btn:focus {
+  outline: none!important;
+  box-shadow: none!important;
+}
+
 /* -------------------------- */
 /* ---- General ---- */
 
@@ -104,17 +109,29 @@ body {
   background-color: #3c3b36;
 }
 
+.btn-logout {
+  font-size: 14px;
+  color: #3c3b36;
+  background-color: #fff;
+  padding: 0!important;
+  text-decoration: underline;
+}
+
 .btn-user-menu {
   position: relative;
+  color: #3c3b36;
+  background-color: #fff;
+  border-color: #3c3b36;
+  border-radius: 50px;
 }
 
 .user-menu {
   position: absolute;
   font-size: 14px;
   line-height: 1.375;
-  left: 0;
+  right: 0;
   top: 60px;
-  width: 260px;
+  width: 100%;
   max-height: calc(100vh - 32px);
   margin: 0;
   padding: 16px 0;
@@ -125,6 +142,10 @@ body {
   text-align: left;
   z-index: 90;
   overflow-y: auto;
+}
+
+.user-menu li {
+  padding: 10px 24px;
 }
 
 /*  Navbar // end */
