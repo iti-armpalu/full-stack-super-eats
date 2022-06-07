@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_02_122900) do
+ActiveRecord::Schema.define(version: 2022_06_06_154033) do
+
+  create_table "restaurants", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "country"
+    t.string "restaurant_type"
+    t.integer "opening_time"
+    t.integer "closing_time"
+    t.integer "delivery_time"
+    t.integer "delivery_fee"
+    t.string "image_url"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -32,5 +49,6 @@ ActiveRecord::Schema.define(version: 2022_06_02_122900) do
     t.string "country"
   end
 
+  add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
 end

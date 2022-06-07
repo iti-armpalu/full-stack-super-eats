@@ -38,6 +38,9 @@ gem 'aws-sdk-s3', '~> 1.112'
 # Webrick
 gem "webrick", "~> 1.7"
 
+# Use kaminari for activerecord pagination
+gem 'kaminari'
+
 # -----
 
 group :development, :test do

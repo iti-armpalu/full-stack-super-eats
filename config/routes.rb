@@ -23,6 +23,11 @@ Rails.application.routes.draw do
     post '/sessions'                => 'sessions#create'
     get  '/authenticated'           => 'sessions#authenticated'
     delete '/sessions'              => 'sessions#destroy'
+
+    # Restaurants
+    post '/restaurants'             => 'restaurants#create'
+    get '/restaurants/'             => 'restaurants#index'
+    get '/restaurants/:id'          => 'restaurants#show'
   end
 
 
