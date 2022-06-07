@@ -188,3 +188,43 @@ restaurants = Restaurant.create!([
     user: users.first
   }
 ])
+
+foods = Food.create!([
+  {
+    name: "Aloha Poke",
+    description: "Salmon, light ponzu sauce, red onion, edamame, cherry tomatoes, seaweed salad, mango, avocado, sesame seeds, chilli flakes and ginger. Recommended Base: Signature rice.",
+    price: 12,
+    image_url: "https://images.unsplash.com/photo-1604259597308-5321e8e4789c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1702",
+    restaurant: restaurants.first
+  },{
+    name: "Waikiki Poke",
+    description: "Raw tuna, spicy mayo sauce, edamame, cucumber, spring onion, masago, pineapple, spicy kale, chilli flakes, sesame seeds and nori strips. Recommended Base: Brown rice.",
+    price: 12,
+    image_url: "https://images.unsplash.com/photo-1602881916963-5daf2d97c06e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180",
+    restaurant: restaurants.first
+  },{
+    name: "Spicy Maui Poke",
+    description: "Raw salmon, raw tuna, hot chilli ponzu sauce, jalapeno, edamame, cucumber, avocado, snow peas, papaya, crunchy garlic, togarashi and ginger. Recommended base: signature rice.",
+    price: 12,
+    image_url: "https://images.unsplash.com/photo-1602881917445-0b1ba001addf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180",
+    restaurant: restaurants.first
+  },{
+    name: "Cappucino",
+    description: "Dark, rich espresso lies in wait under a smoothed and stretched layer of thick milk foam. An alchemy of barista artistry and craft.",
+    price: 3,
+    image_url: "https://images.unsplash.com/photo-1523942839745-7848c839b661?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    restaurant: restaurants.fifth
+  },{
+    name: "Latte",
+    description: "Our dark, rich espresso is balanced with steamed milk and topped with a light layer of foam. A perfect milk-forward warm-up.",
+    price: 3,
+    image_url: "https://images.unsplash.com/photo-1550247611-e651810312fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    restaurant: restaurants.fifth
+  },{
+    name: "Caffe Mocha",
+    description: "Espresso combined with mocha sauce and steamed milk.",
+    price: 3,
+    image_url: "https://images.unsplash.com/photo-1550247611-e651810312fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+    restaurant: restaurants.fifth
+  }
+])
