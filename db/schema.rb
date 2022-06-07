@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_154033) do
+ActiveRecord::Schema.define(version: 2022_06_07_111352) do
+
+  create_table "foods", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "description"
+    t.integer "price"
+    t.string "image_url"
+    t.integer "restaurant_id"
+    t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
+  end
 
   create_table "restaurants", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -49,6 +60,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_154033) do
     t.string "country"
   end
 
+  add_foreign_key "foods", "restaurants"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
 end

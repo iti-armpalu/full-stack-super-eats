@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     post '/restaurants'             => 'restaurants#create'
     get '/restaurants/'             => 'restaurants#index'
     get '/restaurants/:id'          => 'restaurants#show'
+
+    # Foods
+    post '/foods'                   => 'foods#create'
+    get '/restaurants/:id/foods'                    => 'foods#index_by_restaurant'
   end
 
 
