@@ -1,7 +1,7 @@
 // restaurant.jsx
 import React from 'react';
 import Layout from '@src/layout';
-import { handleErrors } from '@utils/fetchHelper';
+import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 
 // Importing stylesheet
 import './restaurant.scss';
@@ -76,6 +76,49 @@ class Restaurant extends React.Component {
     } else {
       return subtotalSum;;
     }
+  }
+
+  submitOrder = (e) => {
+    if (e) { e.preventDefault(); }
+
+    fetch(`/api/orders`, safeCredentials({
+      method: 'POST',
+        body: JSON.stringify({
+          order: {
+            restaurant_id: this.props.restaurant_id,
+          }
+        })
+    }))
+      .then(handleErrors)
+      .then(response => {
+        return this.initiateStripeCheckout(response.order.id)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  initiateStripeCheckout = (order_id) => {
+    return fetch(`/api/charges?order_id=${order_id}&cancel_url=${window.location.pathname}`, safeCredentials({
+      method: 'POST',
+    }))
+      .then(handleErrors)
+      .then(response => {
+        const stripe = Stripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`);
+        stripe.redirectToCheckout({
+          // Make the id field from the Checkout Session creation API response
+          // available to this file, so you can provide it as parameter here
+          // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+          sessionId: response.charge.checkout_session_id,
+        }).then((result) => {
+          // If `redirectToCheckout` fails due to a browser or network
+          // error, display the localized error message to your customer
+          // using `result.error.message`.
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   render () {
@@ -216,7 +259,10 @@ class Restaurant extends React.Component {
                   </div>
                 </div>
                 <div className="d-flex justify-content-center align-items-center">
-                  <a className="btn btn-place-order text-uppercase pl-30 pr-30 pt-10 pb-10 mx-auto" href="/order/id/success" role="button">Place order</a>
+                  {/* <a className="btn btn-place-order text-uppercase pl-30 pr-30 pt-10 pb-10 mx-auto" href="/order/id/success" role="button">Place order</a> */}
+                <form onSubmit={this.submitOrder}>
+                  <button type="submit" className="btn btn-place-order text-uppercase pl-30 pr-30 pt-10 pb-10 mx-auto">Submit order</button>
+                </form>
                 </div>
                 
 

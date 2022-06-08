@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     # Charges
     post '/charges'                 => 'charges#create'
 
+    # Stripe webhook
+    post '/charges/mark_complete'   => 'charges#mark_complete'
+
   end
 
 
