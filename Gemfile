@@ -26,6 +26,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # ----- Added by Iti
 
+# Gem to load environment variables from .env into ENV in development.
+gem 'dotenv-rails', '~> 2.7.6'
+
 # Use Stripe for receiving payments
 gem 'stripe'
 

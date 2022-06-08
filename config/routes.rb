@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/login'                      => 'static_pages#login'
   get '/restaurants'                => 'static_pages#restaurants'
   get '/restaurant/:id'              => 'static_pages#restaurant'
-  get '/order/id/success'           => 'static_pages#order_success'
+  get '/order/:id/success'           => 'static_pages#order_success'
   get '/username/orders'            => 'static_pages#orders'
 
   # Business
@@ -37,6 +37,10 @@ Rails.application.routes.draw do
     post '/orders'                  => 'orders#create'
     get '/orders/:id'               => 'orders#show'
     get '/users/:id/orders'         => 'orders#index_by_user'
+
+    # Charges
+    post '/charges'                 => 'charges#create'
+
   end
 
 
