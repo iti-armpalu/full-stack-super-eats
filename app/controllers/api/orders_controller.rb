@@ -16,8 +16,15 @@ module Api
       rescue ArgumentError => e
         render json: { error: e.message }, status: :bad_request
       end
-
     end
+
+
+    def show
+      @order = Order.find_by(id:params[:id])
+      return render json: { error: 'Cannot find order' }, status: :not_found if !@order
+      render 'api/orders/show'
+    end
+
 
     def index_by_user
       user = User.find_by(email: params[:email])

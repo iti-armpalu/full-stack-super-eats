@@ -1,6 +1,8 @@
 // order_success.jsx
 import React from 'react';
 import Layout from '@src/layout';
+import { handleErrors } from '@utils/fetchHelper';
+import FormatDate from '@utils/formatDate';
 
 // Importing stylesheet
 import './order_success.scss';
@@ -10,8 +12,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faCircle, faClock, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 class OrderSuccess extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      order: {},
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    const order_id = this.props.order_id;
+
+    fetch(`/api/orders/${order_id}`)
+      .then(handleErrors)
+      .then(data => {
+        console.log('data', data)
+        this.setState({
+          order: data.order,
+          loading: false
+        })        
+      })
+  }
 
   render () {
+    const { order, loading } = this.state;
+
+    if (loading) {
+      return <p>Loading...</p>;
+    };
+    
+    const {
+      restaurant,
+      user,
+    } = order
 
   return (
     <Layout>
@@ -19,15 +52,15 @@ class OrderSuccess extends React.Component {
           <div className="pl-40 pr-40">
             <div className="mb-70">
               <h1 className="text-center mb-10">
-                Your order from <span className="order-restaurant-name text-decoration-underline">Season Restaurant</span> is confirmed!
+                Your order from <span className="order-restaurant-name text-decoration-underline">{restaurant.name}</span> is confirmed!
               </h1>
               <div className="d-flex justify-content-center">
                 <p className="order-number">
-                  Order ID: <span>#1</span>
+                  Order ID: <span>#{order.id}</span>
                 </p>
                 <span className="px-2"> · </span>
                 <p className="order-date">
-                  Order submitted: <span>25 May 2022 at 14:00</span>
+                  Order submitted: <span>{FormatDate(order.created_at)}</span>
                 </p>
                 <span className="px-2"> · </span>
                 <p className="order-date">
@@ -51,7 +84,7 @@ class OrderSuccess extends React.Component {
                         Delivery address
                       </p>
                       <h6>
-                        1301 Oaklanding Fleming, New York, United States
+                        {user.address}, {user.city}, {user.country}
                       </h6>
                     </div>
                   </div>
@@ -68,7 +101,7 @@ class OrderSuccess extends React.Component {
                         Estimated delivery time
                       </p>
                       <h6>
-                        15 - 25 mins
+                        {restaurant.delivery_time} mins
                       </h6>
                     </div>
                   </div>

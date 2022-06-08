@@ -17,6 +17,7 @@ class StaticPagesController < ApplicationController
   end
 
   def order_success
+    @data = { order_id: params[:id] }.to_json
     render 'order_success'
   end
 
