@@ -61,30 +61,6 @@ class Restaurant extends React.Component {
     })
   }
 
-  // foods = [
-  //   {
-  //     id: 1,
-  //     name: "Aloha Poke",
-  //     description: "Salmon, light ponzu sauce, red onion, edamame, cherry tomatoes, seaweed salad, mango, avocado, sesame seeds, chilli flakes and ginger. Recommended Base: Signature rice.",
-  //     price: "12",
-  //     image_url: "https://images.unsplash.com/photo-1604259597308-5321e8e4789c?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1702",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Waikiki Poke",
-  //     description: "Raw tuna, spicy mayo sauce, edamame, cucumber, spring onion, masago, pineapple, spicy kale, chilli flakes, sesame seeds and nori strips. Recommended Base: Brown rice.",
-  //     price: "12",
-  //     image_url: "https://images.unsplash.com/photo-1602881916963-5daf2d97c06e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Spicy Maui Poke",
-  //     description: "Raw tuna, spicy mayo sauce, edamame, cucumber, spring onion, masago, pineapple, spicy kale, chilli flakes, sesame seeds and nori strips. Recommended Base: Brown rice.",
-  //     price: "12",
-  //     image_url: "https://images.unsplash.com/photo-1602881917445-0b1ba001addf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180",
-  //   },
-  // ]
-
   updateTotal = () => {
     let basketTotal = [];
     let subtotal = [24, 24, 24];

@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
   has_many :foods
+  has_many :orders
 
 
   # validates :name, presence: true, length: { maximum: 70 }

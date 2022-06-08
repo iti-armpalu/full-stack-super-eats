@@ -31,7 +31,12 @@ Rails.application.routes.draw do
 
     # Foods
     post '/foods'                   => 'foods#create'
-    get '/restaurants/:id/foods'                    => 'foods#index_by_restaurant'
+    get '/restaurants/:id/foods'    => 'foods#index_by_restaurant'
+
+    # Orders
+    post '/orders'                  => 'orders#create'
+    get '/orders/:id'               => 'orders#show'
+    get '/users/:id/orders'         => 'orders#index_by_user'
   end
 
 

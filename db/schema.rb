@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_111352) do
+ActiveRecord::Schema.define(version: 2022_06_08_075153) do
+
+  create_table "charges", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "checkout_session_id"
+    t.string "currency"
+    t.decimal "total", precision: 10, scale: 2
+    t.boolean "complete", default: false
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_charges_on_order_id"
+  end
 
   create_table "foods", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -21,6 +32,15 @@ ActiveRecord::Schema.define(version: 2022_06_07_111352) do
     t.string "image_url"
     t.integer "restaurant_id"
     t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "restaurant_id"
+    t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -60,7 +80,10 @@ ActiveRecord::Schema.define(version: 2022_06_07_111352) do
     t.string "country"
   end
 
+  add_foreign_key "charges", "orders"
   add_foreign_key "foods", "restaurants"
+  add_foreign_key "orders", "restaurants"
+  add_foreign_key "orders", "users"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
 end

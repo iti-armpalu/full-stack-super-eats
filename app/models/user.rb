@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :sessions
   has_many :restaurants
+  has many :orders
 
   validates :first_name, presence: true
   validates :last_name, presence: true
