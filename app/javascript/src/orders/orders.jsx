@@ -78,6 +78,14 @@ class Orders extends React.Component {
                         </div>
                       </div>
                       <div className="divider my-3"></div>
+                      <div className="d-flex justify-content-between px-3 order-details">
+                      <p className="mb-5">Subtotal</p>
+                      <p className="mb-5">$ 24.00</p>
+                    </div>
+                    <div className="d-flex justify-content-between px-3 order-details">
+                      <p className="mb-5">Delivery fee</p>
+                      <p className="mb-5">$ {order.restaurant.delivery_fee}.00</p>
+                    </div>
                       <div className="order-total d-flex justify-content-between px-3">
                         <p>Total</p>
                         <p>$ {this.updateTotal()}.00</p>

@@ -35,6 +35,7 @@ class StaticPagesController < ApplicationController
   end
 
   def delivery_trips
+    @data = { delivery_user_id: params[:id] }.to_json
     render 'delivery_trips'
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_08_075153) do
+ActiveRecord::Schema.define(version: 2022_06_09_122325) do
 
   create_table "charges", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2022_06_08_075153) do
     t.boolean "complete", default: false
     t.integer "order_id"
     t.index ["order_id"], name: "index_charges_on_order_id"
+  end
+
+  create_table "delivery_users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password"
+    t.string "phone_number"
   end
 
   create_table "foods", force: :cascade do |t|

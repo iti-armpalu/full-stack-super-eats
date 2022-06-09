@@ -103,7 +103,7 @@ class SignupWidget extends React.Component {
             <input name="password" type="password" className="form-control mb-15" placeholder="Password" value={password} onChange={this.handleChange} required />
             <div className="mt-30 mb-30">
               <p className="mb-15">Set up your address and you are're good to go!</p>
-              <input name="address" type="ptext" className="form-control mb-15" placeholder="Address"  value={address} onChange={this.handleChange} required />
+              <input name="address" type="text" className="form-control mb-15" placeholder="Address"  value={address} onChange={this.handleChange} required />
               <div className="d-flex ">
               <input name="city" type="text" className="form-control mb-15 mr-5" placeholder="City"  value={city} onChange={this.handleChange} required />
               <input name="country" type="text" className="form-control mb-15 ml-5" placeholder="Country"  value={country} onChange={this.handleChange} required />

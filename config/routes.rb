@@ -13,11 +13,14 @@ Rails.application.routes.draw do
 
   # Delivery partner
   get '/delivery/login'             => 'static_pages#delivery_login'
-  get '/delivery/trips'             => 'static_pages#delivery_trips'
+  get '/delivery/user/:id/trips'             => 'static_pages#delivery_trips'
 
   namespace :api do
     # Users
     post '/users'                   => 'users#create'
+
+    # Delivery Users
+    post '/delivery_users'          => 'delivery_users#create'
 
     # Sessions
     post '/sessions'                => 'sessions#create'

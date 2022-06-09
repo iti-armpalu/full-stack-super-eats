@@ -11,7 +11,7 @@ import './delivery_login.scss';
 
 class DeliveryLogin extends React.Component {
   state = {
-    // authenticated: false,
+    authenticated: false,
     show_login: true,
   }
 

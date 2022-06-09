@@ -10,7 +10,7 @@ import './login.scss';
 
 class Login extends React.Component {
   state = {
-    // authenticated: false,
+    authenticated: false,
     show_login: true,
   }
 
