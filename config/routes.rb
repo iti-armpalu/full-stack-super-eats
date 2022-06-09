@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/restaurants'                => 'static_pages#restaurants'
   get '/restaurant/:id'              => 'static_pages#restaurant'
   get '/order/:id/success'           => 'static_pages#order_success'
-  get '/username/orders'            => 'static_pages#orders'
+  get '/user/:id/orders'            => 'static_pages#orders'
 
   # Business
   get '/business/login'             => 'static_pages#business_login'

@@ -27,10 +27,10 @@ module Api
 
 
     def index_by_user
-      user = User.find_by(email: params[:email])
+      user = User.find_by(id: params[:id])
 
       if user
-        @orders = user.orders
+        @orders = (user.orders).order("created_at DESC")
         render 'api/orders/index'
       end
     end

@@ -16,6 +16,7 @@ class Layout extends React.Component  {
     this.state = {
       authenticated: false,
       first_name: '',
+      user_id: '',
       showHamburgerMenu: false,
       showUserMenu: false,
     }
@@ -29,6 +30,7 @@ class Layout extends React.Component  {
         this.setState({
           authenticated: data.authenticated,
           first_name: data.first_name,
+          user_id: data.user_id
         })
       })
   }
@@ -74,7 +76,7 @@ class Layout extends React.Component  {
 
 
   render () {
-    const { authenticated, first_name, showHamburgerMenu, showUserMenu } = this.state;
+    const { authenticated, first_name, user_id, showHamburgerMenu, showUserMenu } = this.state;
 
     return (
       <React.Fragment>
@@ -105,7 +107,7 @@ class Layout extends React.Component  {
                 {(showUserMenu)
                   ? (<div className="user-menu">
                       <ul className="list-unstyled">
-                        <li><a href="#">Orders</a></li>
+                        <li><a href={`/user/${user_id}/orders`}>Orders</a></li>
                         <li><a href="#">Favourites</a></li>
                         <div className="divider"></div>
                         <li><a href="#">Account</a></li>

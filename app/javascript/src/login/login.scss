@@ -5,7 +5,12 @@
 
 .btn-login-signup {
   color: #fff;
-  background-color: #deb62f;
-  border-color: #deb62f;
+  background-color: #f5d158;
+  border-radius: 50px;
   width: 120px;
+}
+
+.btn-order-history:hover {
+  color: #fff;
+  background-color: #deb62f;
 }
