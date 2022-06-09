@@ -1,6 +1,10 @@
 // signupWidget.jsx
 import React from 'react';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
+// import intlTelInput from 'intl-tel-input';
+
+import IntlTelInput from "react-intl-tel-input";
+import "react-intl-tel-input/dist/main.css";
 
 class DeliverySignupWidget extends React.Component {
   state = {
@@ -101,8 +105,21 @@ class DeliverySignupWidget extends React.Component {
             <input name="password" type="password" className="form-control mb-15" placeholder="Password" value={password} onChange={this.handleChange} required />
             <div className="mt-30 mb-30">
               <p className="mb-15">Add your phone number and you are're good to go!</p>
-              <input name="phone_number" type="tel" className="form-control mb-15" placeholder="Phone number"  value={phone_number} onChange={this.handleChange} required />
+              {/* <input name="phone_number" type="tel" id="phone_number" className="form-control mb-15" placeholder="Phone number" value={phone_number} onChange={this.handleChange} required /> */}
+              <div className="input-group1">
+              <IntlTelInput
+                name="phone_number" 
+                // type="tel" 
+                preferredCountries={["us", "gb", "ae"]}
+                containerClassName="intl-tel-input"
+                inputClassName="form-control input-tel"
+                value={phone_number} 
+                onChange={this.handleChange} 
+                required 
+                    />
             </div>
+            </div>
+            
             <button type="submit" className="btn btn-login-signup d-block mx-auto">
               Sign up
             </button>

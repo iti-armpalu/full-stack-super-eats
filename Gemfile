@@ -44,6 +44,9 @@ gem "webrick", "~> 1.7"
 # Use kaminari for activerecord pagination
 gem 'kaminari'
 
+# Gem for entering and validating international telephone numbers
+gem 'intl-tel-input-rails'
+
 # -----
 
 group :development, :test do

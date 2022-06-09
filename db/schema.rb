@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_122325) do
+ActiveRecord::Schema.define(version: 2022_06_09_134616) do
 
   create_table "charges", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 2022_06_09_122325) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "delivery_user_id"
+    t.index ["delivery_user_id"], name: "index_trips_on_delivery_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -96,4 +103,5 @@ ActiveRecord::Schema.define(version: 2022_06_09_122325) do
   add_foreign_key "orders", "users"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "trips", "delivery_users"
 end

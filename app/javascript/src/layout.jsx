@@ -7,7 +7,7 @@ import './home.scss';
 
 // Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faInstagram, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { faUser, faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 class Layout extends React.Component  {
@@ -33,6 +33,7 @@ class Layout extends React.Component  {
           user_id: data.user_id
         })
       })
+      this.addAbsoluteClass()
   }
 
   showHamburgerMenuFunc = () => {
@@ -46,7 +47,22 @@ class Layout extends React.Component  {
   }
 
   showUserMenuFunc = () => {
+    const overlayEl = document.querySelector('.overlay')
+    if (!this.state.showSearchResults) {
+      overlayEl.classList.replace('overlay', 'dark-overlay')
+    } else {
+      overlayEl.classList.replace('dark-overlay', 'overlay')
+    }
     this.setState({ showUserMenu: !this.state.showUserMenu })
+  }
+
+  addAbsoluteClass = () => {
+    const navbarEl = document.querySelector('#navbar')
+    if (location.pathname == "/") {
+      navbarEl.classList.replace('position-relative', 'position-absolute')
+    } else {
+      navbarEl.classList.replace('position-absolute', 'position-relative')
+    }
   }
 
   logout = (e) => {
