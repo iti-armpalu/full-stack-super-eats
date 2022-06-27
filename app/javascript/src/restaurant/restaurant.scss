@@ -17,7 +17,7 @@
 }
 
 .food-image {
-  padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
+  padding-top: calc(1 / 1 * 100%); /* aspect ratio 3:2 */
   background-position: center;
   background-size: cover;
 }
@@ -35,4 +35,19 @@
 .btn-place-order:hover {
   color: #fff;
   background-color: #deb62f;
+}
+
+.btn-add-basket {
+  color: #f5d158;
+}
+
+.btn-add-basket:hover {
+  color: #deb62f;
+}
+
+.bg-basket {
+  background-color: rgba(245, 209, 88, 0.2);
+  border: 1px solid #f5d158;
+  border-radius: 25px;
+
 }

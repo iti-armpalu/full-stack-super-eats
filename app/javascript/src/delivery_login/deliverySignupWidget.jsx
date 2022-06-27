@@ -73,7 +73,7 @@ class DeliverySignupWidget extends React.Component {
       .then(data => {
         if (data.success) {
           const params = new URLSearchParams(window.location.search);
-          const redirect_url = params.get('redirect_url') || '/delivery/trips';
+          const redirect_url = params.get('redirect_url') || '/delivery/user/1/trips';
           window.location = redirect_url;
         }
       })

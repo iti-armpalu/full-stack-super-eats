@@ -37,22 +37,16 @@ class Layout extends React.Component  {
   }
 
   showHamburgerMenuFunc = () => {
-    const overlayEl = document.querySelector('.overlay')
+    const overlayEl = document.querySelector('.dark-overlay-here')
     if (!this.state.showSearchResults) {
-      overlayEl.classList.replace('overlay', 'dark-overlay')
+      overlayEl.classList.replace('dark-overlay-here', 'dark-overlay')
     } else {
-      overlayEl.classList.replace('dark-overlay', 'overlay')
+      overlayEl.classList.replace('dark-overlay', 'dark-overlay-here')
     }
     this.setState({ showHamburgerMenu: !this.state.showHamburgerMenu })
   }
 
   showUserMenuFunc = () => {
-    const overlayEl = document.querySelector('.overlay')
-    if (!this.state.showSearchResults) {
-      overlayEl.classList.replace('overlay', 'dark-overlay')
-    } else {
-      overlayEl.classList.replace('dark-overlay', 'overlay')
-    }
     this.setState({ showUserMenu: !this.state.showUserMenu })
   }
 
@@ -176,7 +170,7 @@ class Layout extends React.Component  {
                 </li>
                 <li>
                   <a href="/delivery/login" className="d-flex mb-20">
-                    Sign up to deliver
+                    Log in or sign up to deliver
                   </a>
                 </li>
               </ul>

@@ -12,14 +12,14 @@ module Api
       return render json: { error: 'cannot find order' }, status: :not_found if !order
 
       restaurant = order.restaurant
-      total = 50.00
+      total = order.total
 
       # We need the order data entry because we need to associate the new charge to the correct order.
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
           name: "Order from #{restaurant.name}",
-          amount: (50.00 * 100.0).to_i, # Stripe API expects the amount to be given in cents, therefore we multiple it by 100
+          amount: (total * 100.0).to_i, # Stripe API expects the amount to be given in cents, therefore we multiple it by 100
           currency: "usd",
           quantity: 1,
         }],

@@ -29,23 +29,30 @@ Rails.application.routes.draw do
 
     # Restaurants
     post '/restaurants'             => 'restaurants#create'
-    get '/restaurants/'             => 'restaurants#index'
+    get '/restaurants'              => 'restaurants#index'
     get '/restaurants/:id'          => 'restaurants#show'
 
     # Foods
     post '/foods'                   => 'foods#create'
     get '/restaurants/:id/foods'    => 'foods#index_by_restaurant'
 
-    # Orders
+    # Orders 
     post '/orders'                  => 'orders#create'
     get '/orders/:id'               => 'orders#show'
     get '/users/:id/orders'         => 'orders#index_by_user'
+
+    # Orders positions
+    post '/orders_positions'        => 'orders_positions#create'
+    get '/orders_positions'         => 'orders_positions#index'
+    patch '/orders_positions/:id'   => 'orders_positions#update'
+    delete '/orders_positions/:id'  => 'orders_positions#destroy'
 
     # Charges
     post '/charges'                 => 'charges#create'
 
     # Stripe webhook
     post '/charges/mark_complete'   => 'charges#mark_complete'
+    get '/trips/'                   => 'trips#index'
 
   end
 

@@ -63,7 +63,7 @@ class DeliveryLoginWidget extends React.Component {
             </button> */}
             {error && <p className="text-danger mt-2">{error}</p>}
           </form>
-          <a className="btn btn-delivery-login text-uppercase mt-20 mb-20" href="/delivery/trips" role="button">
+          <a className="btn btn-delivery-login text-uppercase mt-20 mb-20" href="/delivery/user/1/trips" role="button">
               Login (temporary)
           </a>
 

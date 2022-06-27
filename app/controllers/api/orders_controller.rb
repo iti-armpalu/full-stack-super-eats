@@ -2,15 +2,15 @@ module Api
   class OrdersController < ApplicationController
 
     def create
-      token = cookies.signed[:supereats_session_token]
-      session = Session.find_by(token: token)
-      return render json: { error: 'user not logged in' }, status: :unauthorized if !session
+      # token = cookies.signed[:supereats_session_token]
+      # session = Session.find_by(token: token)
+      # return render json: { error: 'user not logged in' }, status: :unauthorized if !session
 
       restaurant = Restaurant.find_by(id: params[:order][:restaurant_id])
       return render json: { error: 'cannot find property' }, status: :not_found if !restaurant
 
       begin
-        @order = Order.create({ user_id: session.user.id, restaurant_id: restaurant.id })
+        @order = Order.create({ user_id: session.user.id, restaurant_id: restaurant.id, total: total })
         render 'api/orders/create', status: :created
 
       rescue ArgumentError => e
@@ -38,7 +38,7 @@ module Api
     private
 
     def order_params
-      params.require(:order).permit(:restaurant_id)
+      params.require(:order).permit(:restaurant_id, total)
     end
 
   end

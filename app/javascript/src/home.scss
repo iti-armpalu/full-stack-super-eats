@@ -45,6 +45,12 @@ body {
   background-size: cover;
 }
 
+.aspect-ratio-square {
+  padding-top: calc(1 / 1 * 100%); /* aspect ratio 1:1 */
+  background-position: center;
+  background-size: cover;
+}
+
 /* -------------------------- */
 /* ---- Layout Component ---- */
 
@@ -77,8 +83,12 @@ body {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, .04);
   text-align: left;
-  z-index: 99;
+  z-index: 2;
   overflow-y: auto;
+}
+
+.navbar-nav {
+  z-index: 1;
 }
 
 .btn-log-in {
@@ -185,7 +195,7 @@ height: 40px;
 
 /*  Hero content // start */
 .bg-image {
-  padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
+  // padding-top: calc(2 / 3 * 100%); /* aspect ratio 3:2 */
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -199,10 +209,19 @@ height: 40px;
   z-index: 1;
 }
 
+// .dark-overlay {
+//   top: 0;
+//   background-color: rgba(60, 59, 54, 0.7);
+//   z-index: 3;
+// }
+
 .dark-overlay {
+  position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(60, 59, 54, 0.7);
-  z-index: 3;
 }
 
 .hero-title {
