@@ -4,6 +4,7 @@ import React from 'react';
 import Layout from '@src/layout';
 import LoginWidget from './loginWidget';
 import SignupWidget from './signupWidget';
+import { handleErrors } from '@utils/fetchHelper';
 
 // Importing stylesheet
 import './login.scss';
@@ -14,15 +15,15 @@ class Login extends React.Component {
     show_login: true,
   }
 
-  // componentDidMount() {
-  //   fetch('/api/authenticated')
-  //     .then(handleErrors)
-  //     .then(data => {
-  //       this.setState({
-  //         authenticated: data.authenticated,
-  //       })
-  //     })
-  // }
+  componentDidMount() {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          authenticated: data.authenticated,
+        })
+      })
+  }
 
   toggle = () => {
     this.setState({
@@ -31,23 +32,23 @@ class Login extends React.Component {
   }
 
   render () {
-    const { show_login } = this.state;
+    const { authenticated, show_login } = this.state;
 
-    // if (authenticated) {
-    //   return (
-    //     <Layout>
-    //       <div className="container">
-    //         <div className="row">
-    //           <div className="col-12 col-md-9 col-lg-6 mx-auto my-4">
-    //             <div className="border p-4">
-    //               <p className="mb-0">You are already logged in 🙂</p>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </Layout>
-    //   );
-    // };
+    if (authenticated) {
+      return (
+        <Layout>
+          <div className="container">
+            <div className="row">
+              <div className="col-12 col-md-9 col-lg-6 mx-auto my-4">
+                <div className="border p-4">
+                  <p className="mb-0">You are already logged in 🙂</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Layout>
+      );
+    };
 
     return (
       <Layout>

@@ -12,7 +12,7 @@ module Api
       return render json: { error: 'cannot find order' }, status: :not_found if !order
 
       restaurant = order.restaurant
-      total = order.total
+      total = order.total + order.restaurant.delivery_fee
 
       # We need the order data entry because we need to associate the new charge to the correct order.
       session = Stripe::Checkout::Session.create(
@@ -32,7 +32,6 @@ module Api
       @charge = order.charges.new({
         checkout_session_id: session.id,
         currency: 'usd',
-        total: 50.00
       })
       if @charge.save
         render 'api/charges/create', status: :created

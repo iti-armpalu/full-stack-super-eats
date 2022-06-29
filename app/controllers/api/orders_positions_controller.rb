@@ -2,9 +2,9 @@ module Api
   class OrdersPositionsController < ApplicationController
 
     def create
-      # token = cookies.signed[:supereats_session_token]
-      # session = Session.find_by(token: token)
-      # return render json: { error: 'user not logged in' }, status: :unauthorized if !session
+      token = cookies.signed[:supereats_session_token]
+      session = Session.find_by(token: token)
+      return render json: { error: 'user not logged in' }, status: :unauthorized if !session
 
       food = Food.find_by(id: params[:orders_position][:food_id])
       return render json: { error: 'cannot find food' }, status: :not_found if !food
@@ -26,9 +26,9 @@ module Api
     end
 
     def update
-      # token = cookies.signed[:airbnb_session_token]
-      # session = Session.find_by(token: token)
-      # user = session.user
+      token = cookies.signed[:supereats_session_token]
+      session = Session.find_by(token: token)
+      user = session.user
 
       @orders_position = OrdersPosition.find_by(id: params[:id])
 

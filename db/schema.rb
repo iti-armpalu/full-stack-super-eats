@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.string "address"
     t.string "city"
     t.string "country"
+    t.string "address_url"
     t.string "restaurant_type"
     t.integer "opening_time"
     t.integer "closing_time"

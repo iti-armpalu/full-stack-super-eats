@@ -34,6 +34,12 @@ class OrderSuccess extends React.Component {
       })
   }
 
+  getTotal = (subtotal, deliveryFee) => {
+    let total = subtotal + deliveryFee;
+    total = total.toFixed(2);
+    return total;
+  }
+
   render () {
     const { order, loading } = this.state;
 
@@ -64,14 +70,13 @@ class OrderSuccess extends React.Component {
                 </p>
                 <span className="px-2"> · </span>
                 <p className="order-date">
-                  Order total: <span>$50.00</span>
+                  Order total: <span>$ {this.getTotal(order.total, restaurant.delivery_fee)}</span>
                 </p>
               </div>
             </div>
             <div className="row d-flex justify-content-between gx-0 pt-40 pb-40 pl-60 pr-60">
               <div className="col-4 pl-30 pr-30">
                 <div className="d-flex flex-column">
-
                 <div className="d-flex mb-40">
                     <div className="mr-20 my-auto">
                       <span className="fa-layers fa-fw fa-3x">
@@ -88,7 +93,6 @@ class OrderSuccess extends React.Component {
                       </h6>
                     </div>
                   </div>
-
                   <div className="d-flex mb-40">
                     <div className="mr-20">
                       <span className="fa-layers fa-fw fa-3x">
@@ -129,26 +133,26 @@ class OrderSuccess extends React.Component {
                     </div>
                   </div>
                   <div className="border-top pt-40 pb-10">
-                    <p>You can always view your order details in your order history:</p>
-                    <a className="btn btn-order-history text-uppercase mt-20 mb-20" href={`/user/${user.id}/orders`} role="button">
-                      View order history
+                    <p>
+                      You can always view your order details in your order history:
+                    </p>
+                    <a className="btn btn-order-history text-uppercase mt-20 mb-20" 
+                      href={`/user/${user.id}/orders`} 
+                      role="button">
+                        View order history
                     </a>
                   </div>
-
-
-
                 </div>
               </div>
               <div className="col-7 d-flex">
               <div className="map-area-one me-lg-4 md-mt-50">
 									<div className="mapouter">
 										<div className="gmap_canvas">
-											<iframe className="gmap_iframe" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=jvt&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                      <iframe className="gmap_iframe" src={restaurant.address_url}></iframe>
 										</div>
 									</div>
 								</div>
               </div>
-              
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ class Restaurant extends React.Component {
     super(props)
     this.state = {
       restaurant: {},
+      delivery_fee: '',
     }
   }
 
@@ -35,13 +36,15 @@ class Restaurant extends React.Component {
       console.log(process.env.STRIPE_PUBLISHABLE_KEY)
       this.setState({
         restaurant: data.restaurant,
+        delivery_fee: data.restaurant.delivery_fee,
         loading: false,
       })
     })
   }
 
   render () {
-    const { restaurant } = this.state;
+    const { restaurant, delivery_fee } = this.state;
+    const { restaurant_id } = this.props;
 
   return (
     <Layout>
@@ -68,7 +71,7 @@ class Restaurant extends React.Component {
               <Menu restaurant_id={this.props.restaurant_id} />
             </div>
             <div className="col-4">
-              <Basket />
+              <Basket restaurant_id={restaurant_id} delivery_fee={delivery_fee} />
             </div>
           </div>            
         </div>

@@ -1,9 +1,9 @@
 class Session < ApplicationRecord
   belongs_to :user
-  belongs_to :delivery_user
+  # belongs_to :delivery_user
 
   validates :user, presence: true
-  validates :delivery_user, presence: true
+  # validates :delivery_user, presence: true
 
   before_validation :generate_session_token
 

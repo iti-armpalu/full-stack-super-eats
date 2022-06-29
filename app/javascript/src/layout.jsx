@@ -122,9 +122,9 @@ class Layout extends React.Component  {
                         <div className="divider"></div>
                         <li><a href="#">Account</a></li>
                         <div className="divider"></div>
-                        <li><button type="submit" className="btn btn-logout" onClick={this.logout}>Log out</button></li>
+                        {/* <li><button type="submit" className="btn btn-logout" onClick={this.logout}>Log out</button></li> */}
                       </ul>
-                      
+                      {/* <button type="submit" className="btn btn-logout" onClick={this.logout}>Log out</button> */}
                     </div>)
 
                   : (<div></div>)

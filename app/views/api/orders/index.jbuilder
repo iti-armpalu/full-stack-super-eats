@@ -3,6 +3,7 @@ json.orders do
   json.array! @orders do |order|
     json.id               order.id
     json.created_at       order.created_at
+    json.total            order.total
 
     json.restaurant do
       json.id             order.restaurant.id
