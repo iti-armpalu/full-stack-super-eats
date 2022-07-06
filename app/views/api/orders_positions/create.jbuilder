@@ -8,4 +8,8 @@ json.orders_position do
     json.price  @orders_position.food.price
   end
 
+  json.restaurant do
+    json.id     @orders_position.restaurant.id
+  end
+
 end

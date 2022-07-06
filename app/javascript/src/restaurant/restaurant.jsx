@@ -9,8 +9,11 @@ import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 import './restaurant.scss';
 
 // Import FontAwesome
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faClock, faLocationDot, faBurger, faPizzaSlice, faDrumstickBite,faFish, faPepperHot, faSeedling, faBowlFood, faIceCream, faBottleWater, faMugHot } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faBurger, faPizzaSlice, faDrumstickBite, faFish, faPepperHot, faSeedling, faBowlFood, faIceCream, faBottleWater, faMugHot);
 
 class Restaurant extends React.Component {
   constructor(props) {
@@ -18,11 +21,27 @@ class Restaurant extends React.Component {
     this.state = {
       restaurant: {},
       delivery_fee: '',
+      authenticated: false,
+      orderPositions: [],
+      subtotal: null,
     }
   }
 
   componentDidMount() {
     this.getRestaurantData()
+    this.authenticate()
+    this.getOrdersPositions()
+  }
+
+  // Authenticate user before showing itms in the basket
+  authenticate = () => {
+    fetch('/api/authenticated')
+      .then(handleErrors)
+      .then(data => {
+        this.setState({
+          authenticated: data.authenticated,
+        })
+      })
   }
 
   getRestaurantData() {
@@ -42,36 +61,71 @@ class Restaurant extends React.Component {
     })
   }
 
+  // Get all the basket's orders positions
+  getOrdersPositions = () => {
+    const restaurant_id = this.props.restaurant_id;
+
+    fetch(`/api/restaurants/${restaurant_id}/orders_positions`)
+      .then(handleErrors)
+      .then(data => {
+        console.log(data, "data")
+        const subtotal = (data.orders_positions).reduce((accumulator,current) => accumulator + current.food.price * current.quantity, 0)
+        this.setState({
+          orderPositions: data.orders_positions,
+          subtotal: subtotal,
+        })
+      })
+  }
+
   render () {
-    const { restaurant, delivery_fee } = this.state;
+    const { restaurant, delivery_fee, authenticated } = this.state;
     const { restaurant_id } = this.props;
 
   return (
     <Layout>
       <div className="mt-80 pb-40">
         <div className="pl-40 pr-40">
+          <div>
+            <a href="/restaurants">
+                <FontAwesomeIcon icon={ faChevronLeft } className="mr-10" />
+                Back to restaurants
+            </a>
+          </div>
+          <div className="d-flex align-items-center pt-30 pb-20">
+            <h2>
+              {restaurant.name}
+            </h2>
+            <span className="mx-3"> · </span>
+            <p>
+              <FontAwesomeIcon icon={restaurant.type_icon} className="mr-10 icon-food-type" />
+              {restaurant.restaurant_type}
+            </p>
+            <span className="mx-3"> · </span>
+            <p>
+              <FontAwesomeIcon  icon={faLocationDot} className="mr-10 icon-location-dot"  />
+              {restaurant.address}, {restaurant.city}, {restaurant.country}
+            </p>
+            <span className="mx-3"> · </span>
+            <p>
+            <FontAwesomeIcon  icon={ faClock } className="mr-10 icon-clock"  /> 
+            {restaurant.opening_time}:00 am - {restaurant.closing_time}:00 pm
+            </p>
+          </div>
           <div className="restaurant-image mb-10 rounded position-relative" style={{ backgroundImage: `url(${restaurant.image_url})` }} >
 
             <div className="position-absolute restaurant-delivery-time rounded pl-10 pr-10 pt-5 pb-5 my-auto">
-              <p>{restaurant.delivery_time} mins</p>
-            </div>
-
-            <div className="position-absolute restaurant-details rounded pl-20 pr-20 pt-10 pb-10 my-auto">
-              <h4 className="mb-5">{restaurant.name}</h4>
-              <p className="restaurant-address">
-                <FontAwesomeIcon  icon={faLocationDot} className="mr-10 icon-location-dot"  />
-                {restaurant.address}, {restaurant.city}, {restaurant.country}
+              <p>
+                {restaurant.delivery_time} mins
               </p>
-              <p>Open: {restaurant.opening_time}:00 am - {restaurant.closing_time}:00 pm </p>
             </div>
           </div>
           
           <div className="row mt-80 mb-40">
             <div className="col-8">
-              <Menu restaurant_id={this.props.restaurant_id} />
+              <Menu restaurant_id={this.props.restaurant_id} authenticated={authenticated} getOrdersPositions={this.getOrdersPositions} orderPositions={this.state.orderPositions}/>
             </div>
             <div className="col-4">
-              <Basket restaurant_id={restaurant_id} delivery_fee={delivery_fee} />
+              <Basket restaurant_id={restaurant_id} delivery_fee={delivery_fee} authenticated={authenticated} getOrdersPositions={this.getOrdersPositions} orderPositions={this.state.orderPositions} subtotal={this.state.subtotal}/>
             </div>
           </div>            
         </div>

@@ -47,9 +47,11 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "total"
+    t.integer "subtotal"
     t.integer "user_id"
     t.integer "restaurant_id"
+    t.integer "delivery_user_id"
+    t.index ["delivery_user_id"], name: "index_orders_on_delivery_user_id"
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -59,7 +61,9 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity"
     t.integer "food_id"
+    t.integer "restaurant_id"
     t.index ["food_id"], name: "index_orders_positions_on_food_id"
+    t.index ["restaurant_id"], name: "index_orders_positions_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -71,6 +75,8 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.string "country"
     t.string "address_url"
     t.string "restaurant_type"
+    t.string "type_icon"
+    t.string "price_range"
     t.integer "opening_time"
     t.integer "closing_time"
     t.integer "delivery_time"
@@ -105,13 +111,17 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.string "address"
     t.string "city"
     t.string "country"
+    t.string "phone_number"
+    t.boolean "delivery_partner"
   end
 
   add_foreign_key "charges", "orders"
   add_foreign_key "foods", "restaurants"
+  add_foreign_key "orders", "delivery_users"
   add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "users"
   add_foreign_key "orders_positions", "foods"
+  add_foreign_key "orders_positions", "restaurants"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "trips", "delivery_users"

@@ -1,5 +1,6 @@
 json.order do
-  json.id     @order.id
+  json.id       @order.id
+  json.subtotal @order.subtotal
 
   json.restaurant do
     json.id     @order.restaurant.id

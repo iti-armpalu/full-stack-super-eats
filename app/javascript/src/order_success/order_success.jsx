@@ -36,7 +36,7 @@ class OrderSuccess extends React.Component {
 
   getTotal = (subtotal, deliveryFee) => {
     let total = subtotal + deliveryFee;
-    total = total.toFixed(2);
+    total = Number(total).toFixed(2);
     return total;
   }
 
@@ -50,6 +50,7 @@ class OrderSuccess extends React.Component {
     const {
       restaurant,
       user,
+      delivery_user
     } = order
 
   return (
@@ -70,14 +71,14 @@ class OrderSuccess extends React.Component {
                 </p>
                 <span className="px-2"> · </span>
                 <p className="order-date">
-                  Order total: <span>$ {this.getTotal(order.total, restaurant.delivery_fee)}</span>
+                  Order total: <span>$ {this.getTotal(order.subtotal, restaurant.delivery_fee)}</span>
                 </p>
               </div>
             </div>
             <div className="row d-flex justify-content-between gx-0 pt-40 pb-40 pl-60 pr-60">
               <div className="col-4 pl-30 pr-30">
                 <div className="d-flex flex-column">
-                <div className="d-flex mb-40">
+                  <div className="d-flex mb-40">
                     <div className="mr-20 my-auto">
                       <span className="fa-layers fa-fw fa-3x">
                         <FontAwesomeIcon icon={faCircle} className="icon-circle" />
@@ -111,7 +112,7 @@ class OrderSuccess extends React.Component {
                   </div>
 
                   <div className="d-flex mb-40">
-                    <div className="mr-20">
+                    <div className="mr-20 my-auto">
                       <span className="fa-layers fa-fw fa-3x">
                         <FontAwesomeIcon icon={faCircle} className="icon-circle" />
                         <FontAwesomeIcon  icon={faCar} transform="shrink-8"  className="icon-location-dot" />
@@ -121,16 +122,23 @@ class OrderSuccess extends React.Component {
                       <p className="order-delivery-address mb-1">
                         Delivery partner
                       </p>
-                      <h6>
-                        Peter Parker
+                      <div className="d-flex">
+                      <h6 className="mb-5">
+                        {delivery_user.first_name} {delivery_user.last_name}
                       </h6>
+                      <span className="mx-2"> · </span>
+                      <h6>
+                        <FontAwesomeIcon  icon={ faPhone } className="mr-10 icon-phone"  /> 
+                        {delivery_user.phone_number}
+                      </h6>
+                      </div>
                     </div>
-                    <div className="ml-20 my-auto">
+                    {/* <div className="ml-20 my-auto">
                       <span className="fa-layers fa-fw fa-2x">
                         <FontAwesomeIcon icon={faCircle} className="icon-call-circle" />
                         <FontAwesomeIcon  icon={faPhone} transform="shrink-8"  className="icon-phone" />
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="border-top pt-40 pb-10">
                     <p>

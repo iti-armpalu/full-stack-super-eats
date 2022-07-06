@@ -14,6 +14,7 @@ class Home extends React.Component  {
     super(props)
     this.state = {
       authenticated: false,
+      delivery_partner: false,
     }
   }
 
@@ -24,13 +25,16 @@ class Home extends React.Component  {
         console.log(data)
         this.setState({
           authenticated: data.authenticated,
+          delivery_partner: data.delivery_partner,
+          user_id: data.user_id,
+          
 
         })
       })
   }
 
   render () {
-    const { authenticated } = this.state;
+    const { authenticated, delivery_partner, user_id } = this.state;
 
     return (
 
@@ -89,7 +93,22 @@ class Home extends React.Component  {
             <div className="col-6 col-lg-4">
               <div className="aspect-ratio-rectangle mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1621503236463-3d812b12ea22?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} />
               <h5>Deliver with Super Eats</h5>
-              <a href="/delivery/login" className="text-decoration-underline">Log in or sign up to deliver</a>
+
+
+              {/* Here come if authenticated */}
+              {(authenticated)
+
+              ? <div>
+                  {(delivery_partner)
+                  ?  (<a href={`/delivery/user/${user_id}/trips`}className="text-decoration-underline">Go to your delivery account</a>)
+
+                  : (<a href={`/delivery/user/${user_id}/trips`}className="text-decoration-underline">Set up your delivery account</a>)
+                  }
+                </div>
+
+              : (<a href="/login" className="text-decoration-underline">Log in or sign up and start delivering</a>)
+              }
+              {/* <a href="/delivery/" className="text-decoration-underline">Go to your delivery account</a> */}
             </div>
           </div>
         </div>

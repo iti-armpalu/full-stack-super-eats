@@ -17,6 +17,7 @@ class Layout extends React.Component  {
       authenticated: false,
       first_name: '',
       user_id: '',
+      delivery_partner: false,
       showHamburgerMenu: false,
       showUserMenu: false,
     }
@@ -30,7 +31,8 @@ class Layout extends React.Component  {
         this.setState({
           authenticated: data.authenticated,
           first_name: data.first_name,
-          user_id: data.user_id
+          user_id: data.user_id,
+          delivery_partner: data.delivery_partner,
         })
       })
       this.addAbsoluteClass()
@@ -86,7 +88,7 @@ class Layout extends React.Component  {
 
 
   render () {
-    const { authenticated, first_name, user_id, showHamburgerMenu, showUserMenu } = this.state;
+    const { authenticated, first_name, user_id, delivery_partner, showHamburgerMenu, showUserMenu } = this.state;
 
     return (
       <React.Fragment>
@@ -107,7 +109,7 @@ class Layout extends React.Component  {
             </a>
 
             <div className="ms-auto">
-              <button type="submit" className="btn btn-user-menu pt-10 pb-10 " onClick={this.showUserMenuFunc}>
+              <button type="submit" className="btn btn-user-menu pt-10 pb-10 mr-10" onClick={this.showUserMenuFunc}>
                   <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
                 Hello, {first_name}
                 <span className="ml-10">
@@ -118,17 +120,22 @@ class Layout extends React.Component  {
                   ? (<div className="user-menu">
                       <ul className="list-unstyled">
                         <li><a href={`/user/${user_id}/orders`}>Orders</a></li>
+                        {(delivery_partner === true)
+                        ? (<li><a href={`/delivery/user/${user_id}/trips`}>Delivery trips</a></li>)
+                        :(<div></div>)
+                        }
                         <li><a href="#">Favourites</a></li>
                         <div className="divider"></div>
                         <li><a href="#">Account</a></li>
-                        <div className="divider"></div>
-                        {/* <li><button type="submit" className="btn btn-logout" onClick={this.logout}>Log out</button></li> */}
                       </ul>
-                      {/* <button type="submit" className="btn btn-logout" onClick={this.logout}>Log out</button> */}
                     </div>)
 
                   : (<div></div>)
                 }
+              </button>
+              <button type="submit" className="btn btn-logout pt-10 pb-10" 
+                onClick={this.logout}>
+                  Log out
               </button>
             </div>
           </div>

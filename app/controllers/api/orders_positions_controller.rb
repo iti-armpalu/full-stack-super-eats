@@ -9,8 +9,11 @@ module Api
       food = Food.find_by(id: params[:orders_position][:food_id])
       return render json: { error: 'cannot find food' }, status: :not_found if !food
 
+      restaurant = Restaurant.find_by(id: params[:orders_position][:restaurant_id])
+      return render json: { error: 'cannot find restaurant' }, status: :not_found if !restaurant
+
       begin
-        @orders_position = OrdersPosition.create({ food_id: food.id, quantity: params[:orders_position][:quantity] })
+        @orders_position = OrdersPosition.create({ food_id: food.id, restaurant_id: restaurant.id, quantity: params[:orders_position][:quantity] })
         render 'api/orders_positions/create', status: :created
 
       rescue ArgumentError => e
@@ -18,9 +21,12 @@ module Api
       end
     end
 
-    def index
-      @orders_positions = OrdersPosition.all
-      return render json: { error: 'not_found' }, status: :not_found if !@orders_positions
+    def index_by_restaurant
+      restaurant = Restaurant.find_by(id: params[:id])
+
+      return render json: { error: 'Cannot find restaurant.' }, status: :not_found if !restaurant
+
+      @orders_positions = restaurant.orders_positions
 
       render 'api/orders_positions/index', status: :ok
     end
@@ -59,10 +65,29 @@ module Api
       end
     end
 
+    def destroy_all_index_by_restaurant
+
+      restaurant = Restaurant.find_by(id: params[:id])
+      return render json: { error: 'cannot find restaurant' }, status: :not_found if !restaurant
+
+      orders_positions = restaurant.orders_positions
+      
+      if orders_positions and orders_positions.destroy_all
+        render json: {
+          success: true
+        }
+      else
+        render json: {
+          success: false
+        }
+      end
+
+    end
+
     private
 
     def orders_position_params
-      params.require(:orders_position).permit(:food_id, :quantity)
+      params.require(:orders_position).permit(:food_id, :restaurant_id, :quantity)
     end
 
 

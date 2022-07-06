@@ -6,7 +6,7 @@ module Api
 
       return render json: { error: 'cannot find restaurant' }, status: :not_found if !restaurant
 
-        @foods = (restaurant.foods).order(created_at: :desc)
+        @foods = (restaurant.foods).order(created_at: :asc)
         render 'api/foods/index'
     end
 

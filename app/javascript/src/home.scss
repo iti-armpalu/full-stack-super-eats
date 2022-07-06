@@ -119,15 +119,7 @@ body {
   background-color: #3c3b36;
 }
 
-.btn-logout {
-  font-size: 14px;
-  color: #3c3b36;
-  background-color: #fff;
-  padding: 0!important;
-  text-decoration: underline;
-}
-
-.btn-user-menu {
+.btn-user-menu, .btn-logout {
   position: relative;
   color: #3c3b36;
   background-color: #fff;

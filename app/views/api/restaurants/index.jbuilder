@@ -8,6 +8,7 @@ json.restaurants do
     json.address            restaurant.address
     json.city               restaurant.city
     json.country            restaurant.country
+    json.price_range        restaurant.price_range
     json.restaurant_type    restaurant.restaurant_type
     json.delivery_time      restaurant.delivery_time
     json.image_url          restaurant.image_url

@@ -7,7 +7,7 @@ import './restaurant.scss';
 
 // Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus,  } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCircle, faClock,  } from '@fortawesome/free-solid-svg-icons';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class Menu extends React.Component {
     this.state = {
       restaurantFoods: [],
       quantity: null,
+      isAdded: false,
     }
   }
 
@@ -45,23 +46,36 @@ class Menu extends React.Component {
       method: 'POST',
         body: JSON.stringify({
           orders_position: {
+            restaurant_id: this.props.restaurant_id,
             food_id: foodId,
             quantity: 1,
+            
           }
         })
     }))
       .then(handleErrors)
       .then(data => {
         console.log('data', data)
+        this.props.getOrdersPositions()
+        this.setState({
+          isAdded: true,
+        })
       })
       .catch(error => {
         console.log(error);
       })
   }
 
+  isInBasket = (foodId) => {
+    let basketItems = this.props.orderPositions;
+    return basketItems.some(item => item.food.id === foodId)
+
+  }
 
   render () {
-    const { restaurantFoods } = this.state;
+    const { restaurantFoods, isAdded } = this.state;
+    const { authenticated } = this.props;
+
     return (
       <React.Fragment>
 
@@ -82,15 +96,38 @@ class Menu extends React.Component {
                   <p className="mb-20">
                   {food.description}
                   </p>
-                  <h5 className="food-price">USD {food.price}.00</h5>
+                  <h5 className="food-price">$ {food.price}.00</h5>
                 </div>
 
                 <div className="col-3 my-auto">
-                  <button 
-                  className="btn btn-add-basket text-decoration-underline py-0 mx-auto" 
-                  onClick={ (e) => {this.addToBasket(e, food.id);}}>
-                    Add to basket
+                  {(authenticated)
+
+                  ?
+                  <div>
+                    {!(this.isInBasket(food.id) )
+
+                    ?
+                    <button className="btn btn-add-basket text-decoration-underline py-0 mx-auto"
+                      onClick={ (e) => {this.addToBasket(e, food.id);}}>
+                      Add to basket
+                    </button>
+
+                    :
+                    <p className="text-item-added py-0 px-2 mx-auto">
+                      <FontAwesomeIcon icon={ faCheck } className="mr-5" />
+                    Item added</p>
+                    }
+                  </div>
+
+                  :
+                  <button className="btn btn-add-basket text-decoration-underline py-0 mx-auto"
+                    onClick={ (e) => {this.addToBasket(e, food.id);}} disabled>
+                      Add to basket
                   </button>
+
+                  
+                  }
+                  
                 </div>
 
               </div>

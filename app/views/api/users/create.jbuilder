@@ -1,9 +1,11 @@
 json.user do
-  json.user_id    @user.id
-  json.first_name @user.first_name
-  json.last_name  @user.last_name
-  json.email      @user.email
-  json.address    @user.address
-  json.city       @user.city
-  json.country    @user.country
+  json.user_id                @user.id
+  json.first_name             @user.first_name
+  json.last_name              @user.last_name
+  json.email                  @user.email
+  json.address                @user.address
+  json.city                   @user.city
+  json.country                @user.country
+  json.phone_number           @user.phone_number
+  json.delivery_partner       @user.delivery_partner
 end

@@ -8,6 +8,11 @@ json.orders_positions do
       json.name           orders_position.food.name
       json.price          orders_position.food.price
     end
+
+    json.restaurant do
+      json.id             orders_position.restaurant.id
+    end
+    
     
   end
 end

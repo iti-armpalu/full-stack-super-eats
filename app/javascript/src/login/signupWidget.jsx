@@ -2,6 +2,10 @@
 import React from 'react';
 import { safeCredentials, handleErrors } from '@utils/fetchHelper';
 
+// Import International Tel Input 
+import IntlTelInput from "react-intl-tel-input";
+import "react-intl-tel-input/dist/main.css";
+
 class SignupWidget extends React.Component {
   state = {
     first_name: '',
@@ -11,6 +15,8 @@ class SignupWidget extends React.Component {
     address:'',
     city: '',
     country:'',
+    phone_number: '',
+    delivery: false,
     error: '',
   }
   
@@ -19,6 +25,19 @@ class SignupWidget extends React.Component {
       [e.target.name]: e.target.value,
     })
   }
+
+  handlePhoneChange = (status, phone_number, countryCode) => {
+    this.setState({ 
+      phone_number
+    });
+  };
+
+  handleChecked = (e) => {
+    this.setState({
+      delivery: !this.state.delivery
+    })
+  }
+
 
   signup = (e) => {
     if (e) { e.preventDefault(); }
@@ -36,6 +55,8 @@ class SignupWidget extends React.Component {
           address: this.state.address,
           city: this.state.city,
           country: this.state.country,
+          phone_number: this.state.phone_number,
+          delivery: this.state.delivery,
         }
       })
     }))
@@ -43,7 +64,6 @@ class SignupWidget extends React.Component {
       .then(data => {
         if (data.user) {
           this.login();
-          console.log("Sign up successful")
         }
       })
       .catch(error => {
@@ -83,7 +103,7 @@ class SignupWidget extends React.Component {
   }
 
   render () {
-    const { first_name, last_name, email, password, address, city, country, error } = this.state;
+    const { first_name, last_name, email, password, address, city, country, phone_number, delivery, error } = this.state;
 
     return (
       <React.Fragment>
@@ -94,7 +114,7 @@ class SignupWidget extends React.Component {
         </div>
 
         <div className="bg-login rounded pt-40 pb-40 pl-40 pr-40 mx-auto">
-        <form onSubmit={this.signup}>
+          <form onSubmit={this.signup}>
             <div className="d-flex ">
               <input name="first_name" type="text" className="form-control mb-15 mr-5" placeholder="First name"  value={first_name} onChange={this.handleChange} required />
               <input name="last_name" type="text" className="form-control mb-15 ml-5" placeholder="Last name"  value={last_name} onChange={this.handleChange} required />
@@ -102,12 +122,63 @@ class SignupWidget extends React.Component {
             <input name="email" type="text" className="form-control mb-15" placeholder="Email" value={email} onChange={this.handleChange} required />
             <input name="password" type="password" className="form-control mb-15" placeholder="Password" value={password} onChange={this.handleChange} required />
             <div className="mt-30 mb-30">
-              <p className="mb-15">Set up your address and you are're good to go!</p>
+              <p className="mb-15">
+                Add your phone number
+              </p>
+              <IntlTelInput
+                name="phone_number" 
+                type="tel"
+                preferredCountries={["us", "gb", "ae"]}
+                containerClassName="intl-tel-input"
+                inputClassName="form-control input-tel"
+                value={phone_number} 
+                // onChange={this.handleChange}
+                onPhoneNumberChange={this.handlePhoneChange}
+                required />
+            </div>
+            <div className="mt-30 mb-30">
+              <p className="mb-15">
+                Set up your address and you are're good to go!
+              </p>
               <input name="address" type="text" className="form-control mb-15" placeholder="Address"  value={address} onChange={this.handleChange} required />
               <div className="d-flex ">
-              <input name="city" type="text" className="form-control mb-15 mr-5" placeholder="City"  value={city} onChange={this.handleChange} required />
-              <input name="country" type="text" className="form-control mb-15 ml-5" placeholder="Country"  value={country} onChange={this.handleChange} required />
+                {/* <input name="city" type="text" className="form-control mb-15 mr-5" placeholder="City"  value={city} onChange={this.handleChange} required /> */}
+                <select
+                  name="city"
+                  value={city}
+                  className="form-select mb-15 mr-5"
+                  onChange={this.handleChange}
+                  >
+                    <option value="" disabled>City</option>
+                    <option value="New York">New York</option>
+                </select>
+                
+                {/* <input name="country" type="text" className="form-control mb-15 ml-5" placeholder="Country"  value={country} onChange={this.handleChange} required /> */}
+                <select
+                  name="country"
+                  value={country}
+                  className="form-select mb-15 ml-5"
+                  onChange={this.handleChange}>
+                    <option value="" disabled>Country</option>
+                    <option value="United States">United States</option>
+                </select>
+              </div>
             </div>
+            <div className="mt-30 mb-30">
+              <p className="mb-10">
+                Become a delivery partner and start earning!
+              </p>
+              <div className="form-check">
+                <input 
+                  className="form-check-input" 
+                  type="checkbox"
+                  defaultChecked={delivery}
+                  id="flexCheckDefault" 
+                  onChange={this.handleChecked}></input>
+                <label className="form-check-label" htmlFor="flexCheckDefault">
+                  Yes, I want to become a delivery partner.
+                </label>
+              </div>
             </div>
 
             <button type="submit" className="btn btn-login-signup d-block mx-auto">
@@ -117,7 +188,8 @@ class SignupWidget extends React.Component {
           </form>
         </div>
 
-        <p className="text-center mt-40 mb-20">Already have a Super Eats account? 
+        <p className="text-center mt-40 mb-20">
+          Already have a Super Eats account? 
           <a className="ml-5 text-decoration-underline" onClick={this.props.toggle}>
             Log in
           </a>

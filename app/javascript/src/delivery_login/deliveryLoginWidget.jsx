@@ -14,35 +14,35 @@ class DeliveryLoginWidget extends React.Component {
     })
   }
 
-  // login = (e) => {
-  //   if (e) { e.preventDefault(); }
-  //   this.setState({
-  //     error: '',
-  //   });
+  login = (e) => {
+    if (e) { e.preventDefault(); }
+    this.setState({
+      error: '',
+    });
 
-  //   fetch('/api/sessions', safeCredentials({
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       user: {
-  //         email: this.state.email,
-  //         password: this.state.password,
-  //       }
-  //     })
-  //   }))
-  //     .then(handleErrors)
-  //     .then(data => {
-  //       if (data.success) {
-  //         const params = new URLSearchParams(window.location.search);
-  //         const redirect_url = params.get('redirect_url') || '/';
-  //         window.location = redirect_url;
-  //       }
-  //     })
-  //     .catch(error => {
-  //       this.setState({
-  //         error: 'Could not log in.',
-  //       })
-  //     })
-  // }
+    fetch('/api/sessions', safeCredentials({
+      method: 'POST',
+      body: JSON.stringify({
+        user: {
+          email: this.state.email,
+          password: this.state.password,
+        }
+      })
+    }))
+      .then(handleErrors)
+      .then(data => {
+        if (data.success) {
+          const params = new URLSearchParams(window.location.search);
+          const redirect_url = params.get('redirect_url') || '/';
+          window.location = redirect_url;
+        }
+      })
+      .catch(error => {
+        this.setState({
+          error: 'Could not log in.',
+        })
+      })
+  }
   
   render () {
     const { email, password, error } = this.state;
@@ -63,7 +63,7 @@ class DeliveryLoginWidget extends React.Component {
             </button> */}
             {error && <p className="text-danger mt-2">{error}</p>}
           </form>
-          <a className="btn btn-delivery-login text-uppercase mt-20 mb-20" href="/delivery/user/1/trips" role="button">
+          <a className="btn btn-delivery-login text-uppercase mt-20 mb-20" href="/delivery/user/2/trips" role="button">
               Login (temporary)
           </a>
 
