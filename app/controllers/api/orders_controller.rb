@@ -9,10 +9,8 @@ module Api
       restaurant = Restaurant.find_by(id: params[:order][:restaurant_id])
       return render json: { error: 'Cannot find restaurant' }, status: :not_found if !restaurant
 
-      delivery_user = User.all.sample
-
       begin
-        @order = Order.create({ user_id: session.user.id, restaurant_id: restaurant.id, delivery_user_id: 1, subtotal: params[:order][:subtotal] })
+        @order = Order.create({ user_id: session.user.id, restaurant_id: restaurant.id, subtotal: params[:order][:subtotal] })
         render 'api/orders/create', status: :created
 
       rescue ArgumentError => e
@@ -49,7 +47,7 @@ module Api
     private
 
     def order_params
-      params.require(:order).permit(:restaurant_id, :delivery_user, :subtotal)
+      params.require(:order).permit(:restaurant_id, :subtotal)
     end
 
   end

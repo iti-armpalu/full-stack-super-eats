@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const data = JSON.parse(node.getAttribute('data-params'))
 
   ReactDOM.render(
-    <DeliveryTrips delivery_user_id={data.delivery_user_id} />,
+    <DeliveryTrips user_id={data.user_id} />,
     document.body.appendChild(document.createElement('div')),
   )
 })

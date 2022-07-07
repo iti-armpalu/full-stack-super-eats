@@ -119,6 +119,7 @@ class Basket extends React.Component {
       .then(handleErrors)
       .then(response => {
         this.deleteOrdersPositionsAll(e)
+        this.submitDelivery(e, response.order.id)
         return this.initiateStripeCheckout(response.order.id)
       })
       .catch(error => {
@@ -142,6 +143,26 @@ class Basket extends React.Component {
         this.setState({
           error: 'Could not delete entries.',
         })
+      })
+  }
+
+  submitDelivery = (e, order_id) => {
+    if (e) { e.preventDefault(); }
+
+    fetch(`/api/deliveries`, safeCredentials({
+      method: 'POST',
+        body: JSON.stringify({
+          delivery: {
+            order_id: order_id,
+          }
+        })
+    }))
+      .then(handleErrors)
+      .then(data => {
+       console.log(data, 'data')
+      })
+      .catch(error => {
+        console.log(error);
       })
   }
 

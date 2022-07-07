@@ -20,6 +20,17 @@ users = User.create([
     delivery_partner: true,
   },
   { 
+    first_name: "Catherine", 
+    last_name: "Smith",
+    email: "catherine@test.com", 
+    password: "password",
+    address: "9 Smile Street",
+    city: "New York",
+    country: "United States",
+    phone_number: "0606060606",
+    delivery_partner: true,
+  },
+  { 
     first_name: "Lisa", 
     last_name: "Smith",
     email: "lisa@test.com", 

@@ -20,9 +20,5 @@ json.orders do
       json.address        order.user.address
     end
 
-    json.delivery_user do
-      json.id             order.delivery_user.id
-    end
-
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_22_121944) do
+ActiveRecord::Schema.define(version: 2022_07_07_094311) do
 
   create_table "charges", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -23,14 +23,13 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.index ["order_id"], name: "index_charges_on_order_id"
   end
 
-  create_table "delivery_users", force: :cascade do |t|
+  create_table "deliveries", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password"
-    t.string "phone_number"
+    t.integer "order_id"
+    t.integer "user_id"
+    t.index ["order_id"], name: "index_deliveries_on_order_id"
+    t.index ["user_id"], name: "index_deliveries_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -50,8 +49,6 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.integer "subtotal"
     t.integer "user_id"
     t.integer "restaurant_id"
-    t.integer "delivery_user_id"
-    t.index ["delivery_user_id"], name: "index_orders_on_delivery_user_id"
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -94,13 +91,6 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "delivery_user_id"
-    t.index ["delivery_user_id"], name: "index_trips_on_delivery_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -116,13 +106,13 @@ ActiveRecord::Schema.define(version: 2022_06_22_121944) do
   end
 
   add_foreign_key "charges", "orders"
+  add_foreign_key "deliveries", "orders"
+  add_foreign_key "deliveries", "users"
   add_foreign_key "foods", "restaurants"
-  add_foreign_key "orders", "delivery_users"
   add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "users"
   add_foreign_key "orders_positions", "foods"
   add_foreign_key "orders_positions", "restaurants"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
-  add_foreign_key "trips", "delivery_users"
 end

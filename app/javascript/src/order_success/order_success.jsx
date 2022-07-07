@@ -4,10 +4,10 @@ import Layout from '@src/layout';
 import { handleErrors } from '@utils/fetchHelper';
 import FormatDate from '@utils/formatDate';
 
-// Importing stylesheet
+// Import stylesheet
 import './order_success.scss';
 
-// Importing FontAwesome
+// Import FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCar, faCircle, faClock, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
 
@@ -49,8 +49,7 @@ class OrderSuccess extends React.Component {
     
     const {
       restaurant,
-      user,
-      delivery_user
+      user
     } = order
 
   return (
@@ -124,12 +123,12 @@ class OrderSuccess extends React.Component {
                       </p>
                       <div className="d-flex">
                       <h6 className="mb-5">
-                        {delivery_user.first_name} {delivery_user.last_name}
+                        {/* {delivery_user.first_name} {delivery_user.last_name} */}
                       </h6>
                       <span className="mx-2"> · </span>
                       <h6>
                         <FontAwesomeIcon  icon={ faPhone } className="mr-10 icon-phone"  /> 
-                        {delivery_user.phone_number}
+                        {/* {delivery_user.phone_number} */}
                       </h6>
                       </div>
                     </div>
