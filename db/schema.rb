@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2022_07_07_094311) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "subtotal"
+    t.integer "delivery_user_id"
     t.integer "user_id"
     t.integer "restaurant_id"
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"

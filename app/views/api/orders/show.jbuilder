@@ -18,4 +18,11 @@ json.order do
     json.country        @order.user.country
   end
 
+  json.delivery_user do
+    json.id             @order.delivery_user.id
+    json.first_name     @order.delivery_user.first_name
+    json.last_name      @order.delivery_user.last_name
+    json.phone_number   @order.delivery_user.phone_number
+  end
+
 end

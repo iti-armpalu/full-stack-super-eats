@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     post '/orders'                          => 'orders#create'
     get '/orders/:id'                       => 'orders#show'
     get '/users/:id/orders'                 => 'orders#index_by_user'
+    get '/delivery_users/:id/orders'        => 'orders#index_by_delivery_user'
 
     # Orders positions
     post '/orders_positions'                => 'orders_positions#create'
@@ -45,9 +46,8 @@ Rails.application.routes.draw do
     # Charges
     post '/charges'                         => 'charges#create'
 
-    # Deliveries
-    post '/deliveries'                      => 'deliveries#create'
-    get '/users/:id/deliveries'             => 'deliveries#index_by_user'
+    # # Deliveries
+    # post '/deliveries'                      => 'deliveries#create'
 
     # Stripe webhook
     post '/charges/mark_complete'           => 'charges#mark_complete'
