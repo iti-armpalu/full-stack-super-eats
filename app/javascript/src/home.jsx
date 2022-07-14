@@ -59,7 +59,7 @@ class Home extends React.Component  {
               }
 
               <a className="btn btn-find-food text-uppercase pl-30 pr-30 pt-10 pb-10" href="/restaurants" role="button">Find food</a>
-              <div className="dark-overlay-here"></div>
+              <div className="dark-overlay-inactive"></div>
           </div>
         </div>
       </div>

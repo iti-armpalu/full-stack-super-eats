@@ -10,14 +10,14 @@ import './restaurants.scss';
 
 // Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquare, faUtensils, faBurger, faPizzaSlice, faFish, faBowlFood, faIceCream, faMugHot, faBottleWater, faMapPin, faLocationDot, faDrumstickBite, faSeedling, faPepperHot } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils, faBurger, faPizzaSlice, faFish, faBowlFood, faIceCream, faMugHot, faBottleWater, faLocationDot, faDrumstickBite, faSeedling, faPepperHot } from '@fortawesome/free-solid-svg-icons';
 
 class Restaurants extends React.Component {
   constructor() {
     super();
     this.state = { 
       restaurants: [],
-      filterRestaurant: [],
+      filterRestaurants: [],
       total_pages: null,
       next_page: null,
       loading: true,
@@ -31,7 +31,7 @@ class Restaurants extends React.Component {
         console.log(data, 'data')
         this.setState({
           restaurants: data.restaurants,
-          filterRestaurant: data.restaurants,
+          filterRestaurants: data.restaurants,
           total_pages: data.total_pages,
           next_page: data.next_page,
           loading: false,
@@ -49,7 +49,7 @@ class Restaurants extends React.Component {
       .then(data => {
         this.setState({
           restaurants: this.state.restaurants.concat(data.restaurants),
-          filterRestaurant: this.state.restaurants,
+          filterRestaurants: this.state.restaurants.concat(data.restaurants),
           total_pages: data.total_pages,
           next_page: data.next_page,
           loading: false,
@@ -59,17 +59,17 @@ class Restaurants extends React.Component {
 
   handleClick = event => {
     const byType = event.target.value
-    let filterRestaurant = []
-    if(event.target.value === 'All'){
-      filterRestaurant = this.state.restaurants
-    } else{
-      filterRestaurant = this.state.restaurants.filter(restaurant => restaurant.restaurant_type === byType)
+    let filterRestaurants = []
+    if (event.target.value === 'All'){
+      filterRestaurants = this.state.restaurants
+    } else {
+      filterRestaurants = this.state.restaurants.filter(restaurant => restaurant.restaurant_type === byType)
     }
-    this.setState({filterRestaurant: filterRestaurant})
+    this.setState({filterRestaurants: filterRestaurants})
   }
 
   render () {
-    const { restaurants, filterRestaurant, next_page, loading } = this.state;
+    const { restaurants, filterRestaurants, next_page, loading } = this.state;
 
     return (
       <Layout>
@@ -140,7 +140,7 @@ class Restaurants extends React.Component {
             </div>
 
             <div className="row">
-              {filterRestaurant.map(restaurant => {
+              {filterRestaurants.map(restaurant => {
                 return (
                   <div key={restaurant.id} id={restaurant.id} className="col-6 col-lg-4 mb-40">
                     <a href={`/restaurant/${restaurant.id}`} className="d-block">

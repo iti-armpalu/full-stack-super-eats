@@ -8,7 +8,7 @@ import './home.scss';
 // Importing FontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faUser, faBars, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faChevronDown, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 class Layout extends React.Component  {
   constructor(props) {
@@ -39,12 +39,22 @@ class Layout extends React.Component  {
   }
 
   showHamburgerMenuFunc = () => {
-    const overlayEl = document.querySelector('.dark-overlay-here')
-    if (!this.state.showSearchResults) {
-      overlayEl.classList.replace('dark-overlay-here', 'dark-overlay')
-    } else {
-      overlayEl.classList.replace('dark-overlay', 'dark-overlay-here')
-    }
+    const overlayEl = document.querySelector('.dark-overlay-inactive')
+    overlayEl.classList.replace('dark-overlay-inactive', 'dark-overlay-active')
+
+    const bodyEl = document.querySelector('body')
+    bodyEl.classList.add("fixed-position")
+
+    this.setState({ showHamburgerMenu: !this.state.showHamburgerMenu })
+  }
+
+  closeHamburgerMenuFunc = () => {
+    const overlayEl = document.querySelector('.dark-overlay-active')
+    overlayEl.classList.replace('dark-overlay-active', 'dark-overlay-inactive')
+
+    const bodyEl = document.querySelector('body')
+    bodyEl.classList.remove("fixed-position")
+
     this.setState({ showHamburgerMenu: !this.state.showHamburgerMenu })
   }
 
@@ -153,6 +163,11 @@ class Layout extends React.Component  {
             {(showHamburgerMenu)
             ? 
             (<div className="hamburger-menu">
+              <div className="d-flex justify-content-end my-2">
+                <button onClick={this.closeHamburgerMenuFunc}>
+                  <FontAwesomeIcon icon={faXmark} size="lg" className="mr-15"/>
+                </button>
+              </div>
               <ul className=" mt-20 mb-20">
                 <li>
                   <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="/login" role="button">
