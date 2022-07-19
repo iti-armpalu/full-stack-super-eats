@@ -72,7 +72,7 @@ class Home extends React.Component  {
       <div className="mt-80 pb-40">
         <div className="pl-40 pr-40">
           <div className="row">
-            <div className="col-6 col-lg-4">
+            <div className="col-sm-6 col-lg-4 mb-30">
               <div className="aspect-ratio-rectangle mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1529973565457-a60a2ccf750d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} />
               <h5>Are you hungry?</h5>
 
@@ -85,12 +85,12 @@ class Home extends React.Component  {
               }
 
             </div>
-            <div className="col-6 col-lg-4">
+            <div className="col-sm-6 col-lg-4 mb-30">
               <div className="aspect-ratio-rectangle mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1652862730746-93fcd0da61ae?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHJlc3RhdXJhbnQlMjB0YWtlYXdheXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800)` }} />
               <h5>Your restaurant, delivered</h5>
               <a href="/business/login" className="text-muted">Create a business account (Coming soon)</a>
             </div>
-            <div className="col-6 col-lg-4">
+            <div className="col-sm-6 col-lg-4 mb-30">
               <div className="aspect-ratio-rectangle mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1621503236463-3d812b12ea22?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} />
               <h5>Deliver with Super Eats</h5>
 
@@ -124,7 +124,7 @@ class Home extends React.Component  {
         <div className="pl-40 pr-40">
           <h2 className="mb-30">Countries with Super <b>Eats</b></h2>
           <div className="row gx-0">
-            <div className="col-md-3">
+            <div className="col-6 col-md-3 order-1">
               <ul className="d-md-block p-0 country-list">
                 <li>
                   <a href="#" className="d-flex mb-15">Australia</a>
@@ -146,7 +146,7 @@ class Home extends React.Component  {
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
+            <div className="col-6 col-md-3 order-3 order-md-2">
               <ul className="d-md-block p-0 country-list">
                 <li>
                   <a href="#" className="d-flex mb-15">Ecuador</a>
@@ -168,7 +168,7 @@ class Home extends React.Component  {
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
+            <div className="col-6 col-md-3 order-2 order-md-3">
               <ul className="d-md-block p-0 country-list">
                 <li>
                   <a href="#" className="d-flex mb-15">Mexico</a>
@@ -190,7 +190,7 @@ class Home extends React.Component  {
                 </li>
               </ul>
             </div>
-            <div className="col-md-3">
+            <div className="col-6 col-md-3 order-4">
               <ul className="d-md-block p-0 country-list">
                 <li>
                   <a href="#" className="d-flex mb-15">Sri Lanka</a>

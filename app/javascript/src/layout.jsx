@@ -214,7 +214,7 @@ class Layout extends React.Component  {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="btn btn-sign-up pt-10 pb-10" href="/login" role="button">
+                <a className="btn btn-sign-up pt-10 pb-10" href="/signup" role="button">
                   Sign up
                 </a>
               </li>

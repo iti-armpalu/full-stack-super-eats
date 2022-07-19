@@ -238,7 +238,7 @@ class Basket extends React.Component {
             })}
 
             <form onSubmit={this.submitOrder}>
-              <div className="divider my-3"></div>
+              <div className="divider-basket my-3"></div>
               <div className="row text-end py-2 pr-30">
                 <div className="col">
                   <h6>

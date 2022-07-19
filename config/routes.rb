@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Customer
   get '/login'                              => 'static_pages#login'
+  get '/signup'                              => 'static_pages#login'
   get '/restaurants'                        => 'static_pages#restaurants'
   get '/restaurant/:id'                     => 'static_pages#restaurant'
   get '/order/:id/success'                  => 'static_pages#order_success'
@@ -45,9 +46,6 @@ Rails.application.routes.draw do
 
     # Charges
     post '/charges'                         => 'charges#create'
-
-    # # Deliveries
-    # post '/deliveries'                      => 'deliveries#create'
 
     # Stripe webhook
     post '/charges/mark_complete'           => 'charges#mark_complete'

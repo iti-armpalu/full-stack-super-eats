@@ -1,4 +1,12 @@
-/*----- Fonts ----*/
+* {
+  margin: 0;
+  padding: 0;
+  transition: 0.2s ease;
+  user-select: none;
+}
+
+/* -------------------------- */
+/* ---- General ---- */
 
 body {
   color: #3c3b36;
@@ -8,9 +16,6 @@ body {
   outline: none!important;
   box-shadow: none!important;
 }
-
-/* -------------------------- */
-/* ---- General ---- */
 
 /* Container */
 
@@ -201,12 +206,6 @@ height: 40px;
   z-index: 1;
 }
 
-// .dark-overlay {
-//   top: 0;
-//   background-color: rgba(60, 59, 54, 0.7);
-//   z-index: 3;
-// }
-
 .dark-overlay-active {
   position: absolute;
   top: 0;
@@ -239,6 +238,21 @@ height: 40px;
 .btn-find-food:hover {
   color: #fff;
   background-color: #deb62f;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 60px;
+    line-height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 50px;
+    line-height: 50px;
+    width: 70%;
+  }
 }
 /*  Hero content // end */
 
