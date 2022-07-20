@@ -84,22 +84,24 @@ class Menu extends React.Component {
           {restaurantFoods.map( food => {
             return (
             <div key={food.id} id={food.id} className="col-12 mb-40">
-              <div className="row gx-5">
+              <div className="row gx-lg-5">
 
-                <div className="col-3">
+                <div className="col-6 col-md-3 order-2 order-md-1">
                   <div className="food-image rounded" style={{ backgroundImage: `url(${food.image_url})` }} />
                 </div>
                   
                 
-                <div className="col-6 my-auto">
-                  <h5 className="mb-20"><b>{food.name}</b></h5>
-                  <p className="mb-20">
-                  {food.description}
+                <div className="col-6 col-md-6 my-auto order-1 order-md-2">
+                  <h5 className="food-name mb-10 mb-lg-20">
+                    <b>{food.name}</b>
+                  </h5>
+                  <p className="food-description mb-10 mb-lg-20">
+                    {food.description}
                   </p>
                   <h5 className="food-price">$ {food.price}.00</h5>
                 </div>
 
-                <div className="col-3 my-auto">
+                <div className="col-12 col-md-3 pt-20 pb-20 my-md-auto order-3 food-divider">
                   {(authenticated)
 
                   ?
@@ -113,7 +115,7 @@ class Menu extends React.Component {
                     </button>
 
                     :
-                    <p className="text-item-added py-0 px-2 mx-auto">
+                    <p className="text-item-added py-0 px-lg-2 mx-auto">
                       <FontAwesomeIcon icon={ faCheck } className="mr-5" />
                     Item added</p>
                     }

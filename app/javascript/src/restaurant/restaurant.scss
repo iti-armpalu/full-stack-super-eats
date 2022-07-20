@@ -1,29 +1,97 @@
+/* ------------------------------- */
+/* ---- Restaurant Component ---- */
+
+.icon-food-type, .icon-location-dot, .icon-clock {
+  color: #867de9 !important;
+}
+
+.restaurant-image {
+  padding-top: calc(1 / 3 * 100%);
+  background-position: center;
+  background-size: cover;
+}
+
 .restaurant-delivery-time {
   top: 10px;
   left: 10px;
   background-color: rgba($color: #fff, $alpha: 0.5);
 }
 
-.restaurant-details {
-  bottom: 10px;
-  left: 10px;
-  background-color: rgba($color: #fff, $alpha: 0.7);
+@media (max-width: 576px) {
+  .restaurant-image {
+    padding-top: calc(1 / 2 * 100%); /* aspect ratio 3:2 */
+  }
 }
 
-.restaurant-image {
-  padding-top: calc(1 / 3 * 100%); /* aspect ratio 3:2 */
-  background-position: center;
-  background-size: cover;
-}
+/* ------------------------ */
+/* ---- Menu Component ---- */
 
 .food-image {
-  padding-top: calc(1 / 1 * 100%); /* aspect ratio 3:2 */
+  padding-top: calc(1 / 1 * 100%);
   background-position: center;
   background-size: cover;
 }
 
 .food-price {
   color: #f5d158;
+}
+
+.btn-add-basket {
+  color: #f5d158;
+}
+
+.btn-add-basket:hover {
+  color: #deb62f;
+}
+
+.text-item-added {
+  color: #50c878;
+}
+
+@media (max-width: 768px) {
+  .btn-add-basket {
+    padding-left: 0!important;
+  }
+  
+  .food-divider {
+    border-bottom: 1px solid #f6f6f6;
+  }
+}
+
+@media (max-width: 576px) {
+  .food-name {
+    font-size: 16px;
+  }
+
+  .food-description {
+    font-size: 13px;
+  }
+
+  .food-price {
+    font-size: 16px;
+  }
+
+  .food-divider {
+    border-bottom: 1px solid #f6f6f6;
+  }
+
+}
+
+/* -------------------------- */
+/* ---- Basket Component ---- */
+
+.bg-basket {
+  background-color: rgba(245, 209, 88, 0.2);
+  border: 1px solid #f5d158;
+  border-radius: 25px;
+}
+
+
+.divider-basket {
+  color: #f5d158;
+  background-color: #f5d158;
+  height: 1px;
+  margin: 8px 0;
 }
 
 .btn-place-order {
@@ -35,34 +103,4 @@
 .btn-place-order:hover {
   color: #fff;
   background-color: #deb62f;
-}
-
-.btn-add-basket {
-  color: #f5d158;
-}
-
-.btn-add-basket:hover {
-  color: #deb62f;
-}
-
-.bg-basket {
-  background-color: rgba(245, 209, 88, 0.2);
-  border: 1px solid #f5d158;
-  border-radius: 25px;
-
-}
-
-.icon-food-type, .icon-location-dot, .icon-clock {
-  color: #867de9 !important;
-}
-
-.divider-basket {
-  color: #f5d158;
-  background-color: #f5d158;
-  height: 1px;
-  margin: 8px 0;
-}
-
-.text-item-added {
-  color: #50c878;
 }

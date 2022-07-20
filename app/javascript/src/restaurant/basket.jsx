@@ -198,41 +198,44 @@ class Basket extends React.Component {
           <div>  
             {orderPositions.map( (item) => {
               return (
-                <div key={item.id} id={item.id} className="row gx-0 d-flex justify-content-end align-items-center text-center mt-20 mb-20">
-                  <div className="col">
-                    <p className="text-start ml-10">
-                      {item.food.name}
-                    </p>
-                  </div>
-                  <div className="col-2">
-                    <p className="text-start ml-10">
-                      $ {item.food.price}.00
-                    </p>
-                  </div>
-                  <div className="col-3 d-flex justify-content-center my-auto mx-auto">
-                    <button type="button" className="btn-plus-minus" 
-                      onClick={(e) => {this.decreaseQuantity(e, item.id);}}>
-                        <FontAwesomeIcon icon={faMinus} />
-                    </button>
-                    <p className="item-qty mx-2">
-                      {item.quantity}
-                    </p>
-                    <button type="button" className="btn-plus-minus" 
-                      onClick={ (e) => {this.increaseQuantity(e, item.id);}}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </button>
-                  </div>
-                  <div className="col-2">
-                    <p className="food-subtotal">
-                      $ {this.getItemSubtotal(item.food.price, item.quantity)}
-                    </p>
-                  </div>
-                  <div className="col-1 item-remove">
-                    <button className="btn btn-remove" 
-                      onClick={ (e) => {this.deleteOrdersPosition(e, item.id);}}>
-                        <FontAwesomeIcon icon={faTrashCan} />
-                    </button>
-                  </div>
+                <div 
+                  key={item.id} 
+                  id={item.id} 
+                  className="row gx-0 d-flex justify-content-end align-items-center text-center mt-20 mb-20">
+                    <div className="col">
+                      <p className="text-start ml-10">
+                        {item.food.name}
+                      </p>
+                    </div>
+                    <div className="col-2">
+                      <p className="text-start ml-10">
+                        $ {item.food.price}.00
+                      </p>
+                    </div>
+                    <div className="col-3 d-flex justify-content-center my-auto mx-auto">
+                      <button type="button"
+                        onClick={(e) => {this.decreaseQuantity(e, item.id);}}>
+                          <FontAwesomeIcon icon={faMinus} />
+                      </button>
+                      <p className="item-qty mx-2">
+                        {item.quantity}
+                      </p>
+                      <button type="button"
+                        onClick={ (e) => {this.increaseQuantity(e, item.id);}}>
+                          <FontAwesomeIcon icon={faPlus} />
+                      </button>
+                    </div>
+                    <div className="col-2">
+                      <p className="food-subtotal">
+                        $ {this.getItemSubtotal(item.food.price, item.quantity)}
+                      </p>
+                    </div>
+                    <div className="col-1">
+                      <button className="btn btn-remove" 
+                        onClick={ (e) => {this.deleteOrdersPosition(e, item.id);}}>
+                          <FontAwesomeIcon icon={faTrashCan} />
+                      </button>
+                    </div>
                 </div>
               )
             })}
@@ -246,7 +249,7 @@ class Basket extends React.Component {
                   </h6>
                 </div>
                 <div className="col-4">
-                  <h6 className="total-price">
+                  <h6>
                     $ {Number(this.props.subtotal).toFixed(2)}
                   </h6>
                 </div>
@@ -259,7 +262,7 @@ class Basket extends React.Component {
                   </h6>
                 </div>
                 <div className="col-4">
-                  <h6 className="total-price">
+                  <h6>
                     $ {Number(delivery_fee).toFixed(2)}
                   </h6>
                 </div>
@@ -272,7 +275,7 @@ class Basket extends React.Component {
                   </h5>
                 </div>
                 <div className="col-4">
-                  <h5 className="total-price">
+                  <h5>
                     $ {this.getTotal(this.props.subtotal, delivery_fee)}
                   </h5>
                 </div>

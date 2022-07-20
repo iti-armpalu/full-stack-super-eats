@@ -84,29 +84,29 @@ class Restaurant extends React.Component {
   return (
     <Layout>
       <div className="mt-80 pb-40">
-        <div className="pl-40 pr-40">
+        <div className="container">
           <div>
             <a href="/restaurants">
                 <FontAwesomeIcon icon={ faChevronLeft } className="mr-10" />
                 Back to restaurants
             </a>
           </div>
-          <div className="d-flex align-items-center pt-30 pb-20">
-            <h2>
+          <div className="d-block d-lg-flex align-items-center pt-30 pb-20">
+            <h2 className="mb-20 mb-lg-0">
               {restaurant.name}
             </h2>
-            <span className="mx-3"> · </span>
-            <p>
+            <span className="d-none d-lg-block mx-3"> · </span>
+            <p className="mb-5 mb-lg-0">
               <FontAwesomeIcon icon={restaurant.type_icon} className="mr-10 icon-food-type" />
               {restaurant.restaurant_type}
             </p>
-            <span className="mx-3"> · </span>
-            <p>
+            <span className="d-none d-lg-block mx-3"> · </span>
+            <p className="mb-5 mb-lg-0">
               <FontAwesomeIcon  icon={faLocationDot} className="mr-10 icon-location-dot"  />
               {restaurant.address}, {restaurant.city}, {restaurant.country}
             </p>
-            <span className="mx-3"> · </span>
-            <p>
+            <span className="d-none d-lg-block mx-3"> · </span>
+            <p className="mb-5 mb-lg-0">
             <FontAwesomeIcon  icon={ faClock } className="mr-10 icon-clock"  /> 
             {restaurant.opening_time}:00 am - {restaurant.closing_time}:00 pm
             </p>
@@ -121,10 +121,10 @@ class Restaurant extends React.Component {
           </div>
           
           <div className="row mt-80 mb-40">
-            <div className="col-8">
+            <div className="col-12 col-xl-8">
               <Menu restaurant_id={this.props.restaurant_id} authenticated={authenticated} getOrdersPositions={this.getOrdersPositions} orderPositions={this.state.orderPositions}/>
             </div>
-            <div className="col-4">
+            <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 mx-auto mx-xl-0 pt-20 pt-xl-0">
               <Basket restaurant_id={restaurant_id} delivery_fee={delivery_fee} authenticated={authenticated} getOrdersPositions={this.getOrdersPositions} orderPositions={this.state.orderPositions} subtotal={this.state.subtotal}/>
             </div>
           </div>            

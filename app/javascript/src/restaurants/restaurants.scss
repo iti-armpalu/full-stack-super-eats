@@ -1,3 +1,11 @@
+/* ------------------------------- */
+/* ---- Restaurants Component ---- */
+
+.restaurant-wrap:hover {
+  border: 1px solid #F5D158;
+  border-radius: 5px;
+}
+
 .btn-category {
   background-color: #f2f2f2;
   color: #3c3b36;
@@ -19,16 +27,12 @@
   font-size: 14px;
 }
 
-.restaurant-price-range {
-  color: #F5D158;
-}
-
-.restaurant-price-fill {
-  color: #F5D158;
-}
-
 .icon-location-dot {
   color: #867de9 !important;
+}
+
+.restaurant-price-range {
+  color: #F5D158;
 }
 
 .btn-load-more {
@@ -40,6 +44,16 @@
 .btn-load-more:hover {
   color: #fff;
   background-color: #deb62f;
+}
+
+@media (max-width: 576px) {
+  .btn-category {
+    font-size: 14px;
+  }
+
+  .restaurant-name {
+    font-size: 18px;
+  }
 }
 
 
