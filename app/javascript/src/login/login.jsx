@@ -53,10 +53,10 @@ class Login extends React.Component {
     return (
       <Layout>
         <div className="mt-80 pb-40">
-          <div className="pl-40 pr-40">
+          <div className="container">
             <div className="row">
               {(window.location.pathname === "/login")
-              
+
                 ?
                 <div className="col-12 col-md-9 col-lg-6 mx-auto my-4">
                   {show_login ? <LoginWidget toggle={this.toggle} /> : <SignupWidget toggle={this.toggle} />}

@@ -74,14 +74,13 @@ class Restaurants extends React.Component {
     return (
       <Layout>
         <div className="mt-80 pb-40">
-          <div className="pl-40 pr-40">
-
+          <div className="container">
             <div className="pb-40">
               <h3 className="mb-50">
                 Categories
               </h3>
               <div className="d-flex flex-wrap justify-content-start">
-
+                
                 <button className="btn btn-category pl-20 pr-20 mr-20 mb-10" value='All' onClick={this.handleClick}>
                   <FontAwesomeIcon  icon={faUtensils} size="lg" className="mr-10" />
                   All food

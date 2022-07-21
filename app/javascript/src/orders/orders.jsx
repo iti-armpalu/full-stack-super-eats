@@ -46,7 +46,7 @@ class Orders extends React.Component {
     return (
       <Layout>
         <div className="mt-80 pb-40">
-          <div className="pl-40 pr-40">
+          <div className="container">
             <h3 className="mb-50">
               My orders
             </h3>

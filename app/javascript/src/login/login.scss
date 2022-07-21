@@ -14,3 +14,10 @@
   color: #fff;
   background-color: #deb62f;
 }
+
+@media (max-width: 768px) {
+  .bg-login {
+    width: 100%;
+  }
+
+}

@@ -110,54 +110,106 @@ class Layout extends React.Component  {
         {(authenticated)
 
         ?
-        <nav className="navbar navbar-expand-xl position-relative w-100 pl-40 pr-40" id="navbar">
+        <nav className="navbar navbar-expand-sm position-relative w-100 container" id="navbar">
 
-        {/* Nav for xl screens */}
-          <div className="d-none d-xl-flex flex-grow-1" id="xlNavbar"> 
+          {/* Authenticated - nav for sm and above screens */}
+          <div className="d-none d-sm-flex flex-grow-1" id="xlNavbar"> 
             <a className="navbar-brand py-auto pr-0 pl-2" href="/">
-              <h3 className="m-0">Super <b>Eats</b></h3>
+              <h3 className="m-0">
+                Super <b>Eats</b>
+              </h3>
             </a>
 
             <div className="ms-auto">
-              <button type="submit" className="btn btn-user-menu pt-10 pb-10 mr-10" onClick={this.showUserMenuFunc}>
+              <button 
+                type="submit" 
+                className="btn btn-user-menu pt-10 pb-10 mr-10" 
+                onClick={this.showUserMenuFunc}>
                   <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
-                Hello, {first_name}
-                <span className="ml-10">
-                  <FontAwesomeIcon icon={faChevronDown} />
-                </span>
+                  Hello, {first_name}
+                  <span className="ml-10">
+                    <FontAwesomeIcon icon={faChevronDown} />
+                  </span>
                 
-                {(showUserMenu)
-                  ? (<div className="user-menu">
-                      <ul className="list-unstyled">
-                        <li><a href={`/user/${user_id}/orders`}>Orders</a></li>
-                        {(delivery_partner === true)
-                        ? (<li><a href={`/delivery/user/${user_id}/trips`}>Delivery trips</a></li>)
-                        :(<div></div>)
-                        }
-                        <li><a href="#">Favourites</a></li>
-                        <div className="divider"></div>
-                        <li><a href="#">Account</a></li>
-                      </ul>
-                    </div>)
+                  {(showUserMenu)
+                    ? (<div className="user-menu">
+                        <ul className="list-unstyled">
+                          <li><a href={`/user/${user_id}/orders`}>Orders</a></li>
+                          {(delivery_partner === true)
+                          ? (<li><a href={`/delivery/user/${user_id}/trips`}>Delivery trips</a></li>)
+                          :(<div></div>)
+                          }
+                          <li><a href="#">Favourites</a></li>
+                          <div className="divider"></div>
+                          <li><a href="#">Account details</a></li>
+                        </ul>
+                      </div>)
 
-                  : (<div></div>)
-                }
+                    : (<div></div>)
+                  }
               </button>
-              <button type="submit" className="btn btn-logout pt-10 pb-10" 
+              <button 
+                type="submit" 
+                className="btn btn-logout pt-10 pb-10" 
                 onClick={this.logout}>
                   Log out
               </button>
             </div>
           </div>
+
+          {/* Not authenticated - nav for sm and below screens */}
+          <div className="d-flex d-sm-none w-100">
+            <a className="navbar-brand py-auto pr-0 pl-2" href="/">
+              <h3 className="m-0">Super <b>Eats</b></h3>
+            </a>
+            <div className="ms-auto">
+              <button 
+                type="submit" 
+                className="btn btn-sm btn-user-menu pt-10 pb-10 mr-10" 
+                onClick={this.showUserMenuFunc}>
+                  Account
+                  <span className="ml-10">
+                    <FontAwesomeIcon icon={faChevronDown} />
+                  </span>
+                
+                  {(showUserMenu)
+                    ? (<div className="user-menu">
+                        <ul className="list-unstyled">
+                          <li><a href={`/user/${user_id}/orders`}>Orders</a></li>
+                          {(delivery_partner === true)
+                          ? (<li><a href={`/delivery/user/${user_id}/trips`}>Delivery trips</a></li>)
+                          :(<div></div>)
+                          }
+                          <li><a href="#">Favourites</a></li>
+                          <div className="divider"></div>
+                          <li><a href="#">Account</a></li>
+                        </ul>
+                      </div>)
+
+                    : (<div></div>)
+                  }
+              </button>
+              <button 
+                type="submit" 
+                className="btn btn-sm btn-logout pt-10 pb-10" 
+                onClick={this.logout}>
+                  Log out
+              </button>
+            </div>
+            
+          </div>
+
         </nav>
 
         : 
-        <nav className="navbar navbar-expand-xl position-relative w-100 pl-40 pr-40" id="navbar">
+        <nav className="navbar navbar-expand-sm position-relative w-100 container" id="navbar">
 
-        {/* Nav for xl screens */}
-          <div className="d-none d-xl-flex flex-grow-1" id="xlNavbar"> 
-            <a href="#" className="my-auto mr-20" onClick={this.showHamburgerMenuFunc}>
-              <FontAwesomeIcon icon={faBars} size="xl" />
+        {/* Not authenticated - nav for sm and above screens */}
+          <div className="d-none d-sm-flex flex-grow-1"> 
+            <a 
+              className="d-none d-lg-block my-auto mr-20" 
+              onClick={this.showHamburgerMenuFunc}>
+                <FontAwesomeIcon icon={faBars} size="xl" />
             </a>
 
             {(showHamburgerMenu)
@@ -168,10 +220,13 @@ class Layout extends React.Component  {
                   <FontAwesomeIcon icon={faXmark} size="lg" className="mr-15"/>
                 </button>
               </div>
-              <ul className=" mt-20 mb-20">
+              <ul className="mt-20 mb-20">
                 <li>
-                  <a className="btn btn-sign-up pt-10 pb-10 mb-20" href="/login" role="button">
-                    Sign up
+                  <a 
+                    className="btn btn-sign-up pt-10 pb-10 mb-20" 
+                    href="/login" 
+                    role="button">
+                      Sign up
                   </a>
                 </li>
                 <li>
@@ -191,8 +246,8 @@ class Layout extends React.Component  {
                   </a>
                 </li>
                 <li>
-                  <a href="/delivery/login" className="d-flex mb-20">
-                    Log in or sign up to deliver
+                  <a href="/#" className="text-muted d-flex mb-20">
+                    Log in or sign up to deliver (Coming soon)
                   </a>
                 </li>
               </ul>
@@ -203,19 +258,50 @@ class Layout extends React.Component  {
             }
 
             <a className="navbar-brand py-auto pr-0 pl-2" href="/">
-              <h3 className="m-0">Super <b>Eats</b></h3>
+              <h3 className="mx-0 my-auto">Super <b>Eats</b></h3>
             </a>
 
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="btn btn-log-in pt-10 pb-10 mr-20" href="/login" role="button">
-                  <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
-                  Log in
+                <a 
+                  className="btn btn-log-in pt-10 pb-10 mr-20" 
+                  href="/login" 
+                  role="button">
+                    <FontAwesomeIcon icon={faUser} size="lg" className="mr-10" />
+                    Log in
                 </a>
               </li>
               <li className="nav-item">
-                <a className="btn btn-sign-up pt-10 pb-10" href="/signup" role="button">
-                  Sign up
+                <a 
+                  className="btn btn-sign-up pt-10 pb-10" 
+                  href="/signup" 
+                  role="button">
+                    Sign up
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Not authenticated - nav for sm and below screens */}
+          <div className="d-flex d-sm-none w-100">
+            <a className="navbar-brand py-auto pr-0 pl-2" href="/">
+              <h3 className="m-0">Super <b>Eats</b></h3>
+            </a>
+            <ul className="d-flex ms-auto">
+              <li className="nav-item">
+                <a 
+                  className="btn btn-sm btn-log-in pt-10 pb-10 mr-10" 
+                  href="/login" 
+                  role="button">
+                    Log in
+                </a>
+              </li>
+              <li className="nav-item">
+                <a 
+                  className="btn btn-sm btn-sign-up pt-10 pb-10" 
+                  href="/signup" 
+                  role="button">
+                    Sign up
                 </a>
               </li>
             </ul>
@@ -239,7 +325,7 @@ class Layout extends React.Component  {
 			  ===================================================== 
         */}
         <footer id="footer" className="mt-80 pt-70 pb-70">
-          <div className="pl-40 pr-40">
+          <div className="container">
             <div className="row gx-0">
               <div className="col-12 col-md-6 mb-40">
                 <div className="d-flex flex-column align-content-between">

@@ -54,22 +54,24 @@ class LoginWidget extends React.Component {
           <h2>Log in</h2>
           <p>Just log in and start ordering. Say no to hunger.</p>
         </div>
-
         <div className="bg-login rounded pt-40 pb-40 pl-40 pr-40 mx-auto">
           <form onSubmit={this.login}>
             <input name="email" type="text" className="form-control mb-15" placeholder="Email" value={email} onChange={this.handleChange} required />
             <input name="password" type="password" className="form-control mb-30" placeholder="Password" value={password} onChange={this.handleChange} required />
-            <button type="submit" className="btn btn-login-signup d-block mx-auto">
-              Log in
+            <button 
+              type="submit" 
+              className="btn btn-login-signup d-block mx-auto">
+                Log in
             </button>
             {error && <p className="text-danger mt-2">{error}</p>}
           </form>
-
         </div>
-
-        <p className="text-center mt-40 mb-20">Don't have an account yet? 
-          <a className="ml-5 text-decoration-underline" onClick={this.props.toggle}>
-            Sign up
+        <p className="text-center mt-40 mb-20">
+          Don't have an account yet? 
+          <a 
+            className="ml-5 text-decoration-underline" 
+            onClick={this.props.toggle}>
+              Sign up
           </a>
         </p>
       </React.Fragment>

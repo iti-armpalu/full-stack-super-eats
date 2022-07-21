@@ -70,18 +70,25 @@ class Home extends React.Component  {
       ===================================================== 
       */}
       <div className="mt-80 pb-40">
-        <div className="pl-40 pr-40">
+        <div className="container">
           <div className="row">
             <div className="col-sm-6 col-lg-4 mb-30">
               <div className="aspect-ratio-rectangle mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1529973565457-a60a2ccf750d?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} />
               <h5>Are you hungry?</h5>
 
-              {/* Here come if authenticated */}
               {(authenticated)
               
-              ? (<a href="/restaurants" className="text-decoration-underline">Find food</a>)
+              ? <a 
+                  href="/restaurants" 
+                  className="text-decoration-underline">
+                    Find food
+                </a>
             
-              : (<a href="/login" className="text-decoration-underline">Log in or sign up and start ordering</a>)
+              : <a 
+                  href="/login" 
+                  className="text-decoration-underline">
+                    Log in or sign up and start ordering
+                </a>
               }
 
             </div>
@@ -94,21 +101,28 @@ class Home extends React.Component  {
               <div className="aspect-ratio-rectangle mb-10 rounded" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1621503236463-3d812b12ea22?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770)` }} />
               <h5>Deliver with Super Eats</h5>
 
-
-              {/* Here come if authenticated */}
               {(authenticated)
-
               ? <div>
                   {(delivery_partner)
-                  ?  (<a href={`/delivery/user/${user_id}/trips`}className="text-decoration-underline">Go to your delivery account</a>)
+                  ? <a 
+                      href={`/delivery/user/${user_id}/trips`}className="text-decoration-underline">
+                        Go to your delivery account
+                    </a>
 
-                  : (<a href={`/delivery/user/${user_id}/trips`}className="text-decoration-underline">Set up your delivery account</a>)
+                  : <a 
+                      href="#"
+                      className="text-muted text-decoration-underline">
+                        Set up your delivery account (Coming soon)
+                    </a>
                   }
                 </div>
 
-              : (<a href="/login" className="text-decoration-underline">Log in or sign up and start delivering</a>)
+              : <a 
+                  href="/signup" 
+                  className="text-decoration-underline">
+                    Sign up and start delivering
+                </a>
               }
-              {/* <a href="/delivery/" className="text-decoration-underline">Go to your delivery account</a> */}
             </div>
           </div>
         </div>
@@ -121,7 +135,7 @@ class Home extends React.Component  {
       ===================================================== 
       */}
       <div className="mt-80">
-        <div className="pl-40 pr-40">
+        <div className="container">
           <h2 className="mb-30">Countries with Super <b>Eats</b></h2>
           <div className="row gx-0">
             <div className="col-6 col-md-3 order-1">
