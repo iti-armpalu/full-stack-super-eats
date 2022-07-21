@@ -34,14 +34,42 @@
 
 
 .mapouter .gmap_iframe,
-.map-area-one .mapouter,
+.map-area .mapouter,
 .mapouter .gmap_canvas {
   height: 100%; 
   width: 100%;
 }
 
-.map-area-one {
+.map-area {
   width: 100%; 
   border-radius: 30px; 
   overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .order-details-wrap {
+    padding: 40px 20px;
+  }
+
+  .order-info-wrap {
+    padding-left: 10px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  .order-details-wrap {
+    padding: 0;
+  }
+
+  .map-area {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .order-info-wrap {
+    padding: 0;
+  }
+  
 }
