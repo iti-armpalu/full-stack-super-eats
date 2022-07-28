@@ -44,14 +44,13 @@ class Menu extends React.Component {
         body: JSON.stringify({
           orders_position: {
             restaurant_id: this.props.restaurant_id,
-            order_id: 2,
             food_id: foodId,
             quantity: 1,
           }
         })
     }))
       .then(handleErrors)
-      .then(response => {
+      .then(data => {
         this.props.getOrdersPositions()
       })
       .catch(error => {
