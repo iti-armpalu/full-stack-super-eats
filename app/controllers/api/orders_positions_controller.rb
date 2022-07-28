@@ -55,6 +55,15 @@ module Api
       end
     end
 
+    def update
+      @orders_position = OrdersPosition.find_by(id: params[:id])
+
+      return render 'not_found', status: :not_found if not @orders_position
+      return render 'bad_request', status: :bad_request if not @orders_position.update(orders_position_params)
+
+      render 'api/orders_positions/show', status: :ok
+    end
+
     def destroy_all_index_by_restaurant
       restaurant = Restaurant.find_by(id: params[:id])
       return render json: { error: 'cannot find restaurant' }, status: :not_found if !restaurant
