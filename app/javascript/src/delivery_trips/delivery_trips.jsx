@@ -29,7 +29,7 @@ class DeliveryTrips extends React.Component {
     fetch(`/api/delivery_users/${delivery_partner_id}/orders`)
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         this.setState({
           deliveryTrips: data.orders,
           loading: false

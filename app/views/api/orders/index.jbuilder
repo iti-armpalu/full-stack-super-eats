@@ -4,6 +4,7 @@ json.orders do
     json.id               order.id
     json.created_at       order.created_at
     json.subtotal         order.subtotal
+    json.is_paid          order.is_paid?
 
     json.restaurant do
       json.id             order.restaurant.id

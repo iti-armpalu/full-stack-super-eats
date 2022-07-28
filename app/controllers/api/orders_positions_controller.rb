@@ -13,7 +13,7 @@ module Api
       return render json: { error: 'cannot find restaurant' }, status: :not_found if !restaurant
 
       begin
-        @orders_position = OrdersPosition.create({ food_id: food.id, restaurant_id: restaurant.id, quantity: params[:orders_position][:quantity] })
+        @orders_position = OrdersPosition.create({ user_id: session.user.id, food_id: food.id, restaurant_id: restaurant.id, quantity: params[:orders_position][:quantity] })
         render 'api/orders_positions/create', status: :created
 
       rescue ArgumentError => e
@@ -23,29 +23,20 @@ module Api
 
     def index_by_restaurant
       restaurant = Restaurant.find_by(id: params[:id])
-
       return render json: { error: 'Cannot find restaurant.' }, status: :not_found if !restaurant
-
       @orders_positions = restaurant.orders_positions
-
       render 'api/orders_positions/index', status: :ok
     end
 
-    def update
-      token = cookies.signed[:supereats_session_token]
-      session = Session.find_by(token: token)
-      user = session.user
-
-      @orders_position = OrdersPosition.find_by(id: params[:id])
-
-      return render 'not_found', status: :not_found if not @orders_position
-      return render 'bad_request', status: :bad_request if not @orders_position.update(orders_position_params)
-
-      render 'api/orders_positions/show', status: :ok
+    def index_by_order
+      order = Order.find_by(id: params[:id])
+      return render json: { error: 'Cannot find order.' }, status: :not_found if !order
+      @orders_positions = order.orders_positions
+      render 'api/orders_positions/index', status: :ok
     end
 
     def destroy
-      # token = cookies.signed[:airbnb_session_token]
+      # token = cookies.signed[:supereats_session_token]
       # session = Session.find_by(token: token)
 
       # return render json: { success: false } unless session
@@ -53,7 +44,6 @@ module Api
       # user = session.user
       orders_position = OrdersPosition.find_by(id: params[:id])
 
-      # if property and property.user == user and property.destroy
       if orders_position and orders_position.destroy
         render json: {
           success: true

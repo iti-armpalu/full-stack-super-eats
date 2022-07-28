@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(version: 2022_07_07_094311) do
     t.integer "quantity"
     t.integer "food_id"
     t.integer "restaurant_id"
+    t.integer "user_id"
     t.index ["food_id"], name: "index_orders_positions_on_food_id"
     t.index ["restaurant_id"], name: "index_orders_positions_on_restaurant_id"
+    t.index ["user_id"], name: "index_orders_positions_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -114,6 +116,7 @@ ActiveRecord::Schema.define(version: 2022_07_07_094311) do
   add_foreign_key "orders", "users"
   add_foreign_key "orders_positions", "foods"
   add_foreign_key "orders_positions", "restaurants"
+  add_foreign_key "orders_positions", "users"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sessions", "users"
 end

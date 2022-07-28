@@ -15,21 +15,6 @@ module Api
       end
     end
 
-    def create_delivery_session
-      @delivery_user = DeliveryUser.find_by(email: params[:user][:email])
-
-      if @delivery_user and BCrypt::Password.new(@delivery_user.password) == params[:user][:password]
-        session = @delivery_user.sessions.create
-        cookies.permanent.signed[:supereats_session_token] = {
-          value: session.token,
-          httponly: true
-        }
-        render 'api/sessions/create', status: :created
-      else
-        render json: { success: false }, status: :bad_request
-      end
-    end
-
     def authenticated
       token = cookies.signed[:supereats_session_token]
       session = Session.find_by(token: token)

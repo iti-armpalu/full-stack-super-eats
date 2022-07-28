@@ -26,7 +26,7 @@ class OrderSuccess extends React.Component {
     fetch(`/api/orders/${order_id}`)
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         this.setState({
           order: data.order,
           loading: false

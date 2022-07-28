@@ -77,13 +77,6 @@ class Basket extends React.Component {
     })
   }
 
-  // Calculate subtotal of the item in the basket
-  getItemSubtotal = (price, quantity) => {
-    let itemSubtotal = price * quantity;
-    itemSubtotal = itemSubtotal.toFixed(2);
-    return itemSubtotal
-  }
-
   // Delete item in the basket, and refresh the basket's orders positions
   deleteOrdersPosition = (e, id) => {
     e.preventDefault();
@@ -104,29 +97,7 @@ class Basket extends React.Component {
       })
   }
 
-  submitOrder = (e) => {
-    if (e) { e.preventDefault(); }
-
-    fetch(`/api/orders`, safeCredentials({
-      method: 'POST',
-        body: JSON.stringify({
-          order: {
-            restaurant_id: this.props.restaurant_id,
-            subtotal: this.props.subtotal,
-          }
-        })
-    }))
-      .then(handleErrors)
-      .then(response => {
-        // console.log(response)
-        this.deleteOrdersPositionsAll(e)
-        return this.initiateStripeCheckout(response.order.id)
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
+  // Delete orders_positions after new order is created
   deleteOrdersPositionsAll = (e) => {
     e.preventDefault();
     const restaurant_id = this.props.restaurant_id;
@@ -146,12 +117,44 @@ class Basket extends React.Component {
       })
   }
 
+  // Calculate subtotal of the item in the basket
+  getItemSubtotal = (price, quantity) => {
+    let itemSubtotal = price * quantity;
+    itemSubtotal = itemSubtotal.toFixed(2);
+    return itemSubtotal
+  }
+
+  // Calculate total
   getTotal = (subtotal, deliveryFee) => {
     let total = subtotal + deliveryFee;
     total = Number(total).toFixed(2);
     return total;
   }
 
+  // Submit an order
+  submitOrder = (e) => {
+    if (e) { e.preventDefault(); }
+
+    fetch(`/api/orders`, safeCredentials({
+      method: 'POST',
+        body: JSON.stringify({
+          order: {
+            restaurant_id: this.props.restaurant_id,
+            subtotal: this.props.subtotal
+          }
+        })
+    }))
+      .then(handleErrors)
+      .then(response => {
+        this.deleteOrdersPositionsAll(e)
+        return this.initiateStripeCheckout(response.order.id)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  // Initiate Stripe checkout
   initiateStripeCheckout = (order_id) => {
     return fetch(`/api/charges?order_id=${order_id}&cancel_url=${window.location.pathname}`, safeCredentials({
       method: 'POST',
@@ -163,9 +166,6 @@ class Basket extends React.Component {
           sessionId: response.charge.checkout_session_id,
         })
         .then((result) => {
-          // If `redirectToCheckout` fails due to a browser or network
-          // error, display the localized error message to your customer
-          // using `result.error.message`.
         });
       })
       .catch(error => {
@@ -174,7 +174,6 @@ class Basket extends React.Component {
   }
 
   render () {
-    // const { total } = this.state;
     const { orderPositions, delivery_fee, authenticated } =this.props;
 
     if (!authenticated) {
@@ -254,7 +253,6 @@ class Basket extends React.Component {
                   </h6>
                 </div>
               </div>
-
               <div className="row text-end py-2 pr-30">
                 <div className="col">
                   <h6>
@@ -267,7 +265,6 @@ class Basket extends React.Component {
                   </h6>
                 </div>
               </div>
-
               <div className="row text-end py-2 pr-30">
                 <div className="col">
                   <h5>
@@ -280,13 +277,11 @@ class Basket extends React.Component {
                   </h5>
                 </div>
               </div>
-
               <div className="d-flex justify-content-center align-items-center my-5">
                 <button type="submit" className="btn btn-place-order text-uppercase pl-30 pr-30 pt-10 pb-10 mx-auto">
                   Submit order
                 </button>
               </div>
-              
             </form>
           </div>
 

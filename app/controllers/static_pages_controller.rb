@@ -26,14 +26,6 @@ class StaticPagesController < ApplicationController
     render 'orders'
   end
 
-  def business_login
-    render 'business_login'
-  end
-
-  def delivery_login
-    render 'delivery_login'
-  end
-
   def delivery_trips
     @data = { user_id: params[:id] }.to_json
     render 'delivery_trips'

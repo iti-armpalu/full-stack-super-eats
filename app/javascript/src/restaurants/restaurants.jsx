@@ -24,19 +24,27 @@ class Restaurants extends React.Component {
     }
   }
 
-  componentDidMount(){
-    fetch('/api/restaurants')
-      .then(handleErrors)
-      .then(data => {
-        console.log(data, 'data')
-        this.setState({
-          restaurants: data.restaurants,
-          filterRestaurants: data.restaurants,
-          total_pages: data.total_pages,
-          next_page: data.next_page,
-          loading: false,
-        })
+  componentDidMount() {
+    this.getRestaurants()
+  }
+
+  getRestaurants = (type) => {
+    fetch(`/api/restaurants?restaurant_type=${type}`)
+    .then(handleErrors)
+    .then(data => {
+      console.log(data, 'data')
+      this.setState({
+        restaurants: data.restaurants,
+        total_pages: data.total_pages,
+        next_page: data.next_page,
+        loading: false,
       })
+    })
+  }
+
+  handleClick = (e) => {
+    const type = e.target.value
+    this.getRestaurants(type)
   }
 
   loadMore = () => {
@@ -49,7 +57,6 @@ class Restaurants extends React.Component {
       .then(data => {
         this.setState({
           restaurants: this.state.restaurants.concat(data.restaurants),
-          filterRestaurants: this.state.restaurants.concat(data.restaurants),
           total_pages: data.total_pages,
           next_page: data.next_page,
           loading: false,
@@ -57,19 +64,8 @@ class Restaurants extends React.Component {
       })
   }
 
-  handleClick = event => {
-    const byType = event.target.value
-    let filterRestaurants = []
-    if (event.target.value === 'All'){
-      filterRestaurants = this.state.restaurants
-    } else {
-      filterRestaurants = this.state.restaurants.filter(restaurant => restaurant.restaurant_type === byType)
-    }
-    this.setState({filterRestaurants: filterRestaurants})
-  }
-
   render () {
-    const { restaurants, filterRestaurants, next_page, loading } = this.state;
+    const { restaurants, next_page, loading } = this.state;
 
     return (
       <Layout>
@@ -80,15 +76,21 @@ class Restaurants extends React.Component {
                 Categories
               </h3>
               <div className="d-flex flex-wrap justify-content-start">
-                
-                <button className="btn btn-category pl-20 pr-20 mr-20 mb-10" value='All' onClick={this.handleClick}>
-                  <FontAwesomeIcon  icon={faUtensils} size="lg" className="mr-10" />
-                  All food
+
+                <button 
+                  className="btn btn-category pl-20 pr-20 mr-20 mb-10" 
+                  value='All' 
+                  onClick={this.handleClick}>
+                    <FontAwesomeIcon  icon={faUtensils} size="lg" className="mr-10" />
+                    All food
                 </button>
 
-                <button className="btn btn-category pl-20 pr-20 mr-20 mb-10" value='Burger' onClick={this.handleClick}>
-                  <FontAwesomeIcon  icon={faBurger} size="lg" className="mr-10" />
-                  Burger
+                <button 
+                  className="btn btn-category pl-20 pr-20 mr-20 mb-10" 
+                  value='Burger' 
+                  onClick={this.handleClick}>
+                    <FontAwesomeIcon  icon={faBurger} size="lg" className="mr-10" />
+                    Burger
                 </button>
 
                 <button className="btn btn-category pl-20 pr-20 mr-20 mb-10" value='Pizza' onClick={this.handleClick}>
@@ -139,7 +141,7 @@ class Restaurants extends React.Component {
             </div>
 
             <div className="row">
-              {filterRestaurants.map(restaurant => {
+              {restaurants.map(restaurant => {
                 return (
                   <div 
                     key={restaurant.id} 

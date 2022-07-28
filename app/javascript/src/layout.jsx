@@ -27,7 +27,7 @@ class Layout extends React.Component  {
     fetch('/api/authenticated')
       .then(handleErrors)
       .then(data => {
-        console.log(data)
+        // console.log(data)
         this.setState({
           authenticated: data.authenticated,
           first_name: data.first_name,

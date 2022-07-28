@@ -3,7 +3,6 @@ class Order < ApplicationRecord
   belongs_to :delivery_user, class_name: 'User', foreign_key: 'delivery_user_id'
   belongs_to :restaurant
   has_many :charges
-  # has_many :deliveries
 
   validates :user, presence: true
   validates :restaurant, presence: true

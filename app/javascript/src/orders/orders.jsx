@@ -13,7 +13,7 @@ class Orders extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userOrders: []
+      userOrders: [],
     }
   }
 
@@ -27,7 +27,7 @@ class Orders extends React.Component {
     fetch(`/api/users/${user_id}/orders`)
       .then(handleErrors)
       .then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         this.setState({
           userOrders: data.orders,
         })
@@ -80,30 +80,30 @@ class Orders extends React.Component {
                           <h6 className="mb-10">
                             Your order details:
                           </h6>
-                          <div className="d-flex justify-content-between px-3 order-details">
-                            <p className="mb-5">
-                              Subtotal
-                            </p>
-                            <p className="mb-5">
-                              $ {Number(order.subtotal).toFixed(2)}
-                            </p>
-                          </div>
-                          <div className="d-flex justify-content-between px-3 order-details">
-                            <p className="mb-5">
-                              Delivery fee
-                            </p>
-                            <p className="mb-5">
-                              $ {Number(order.restaurant.delivery_fee).toFixed(2)}
-                            </p>
-                          </div>
-                          <div className="order-total d-flex justify-content-between px-3">
-                            <p>
-                              <b>Total</b>
-                            </p>
-                            <p>
-                              <b>$ {this.getTotal(order.subtotal, order.restaurant.delivery_fee)}</b>
-                            </p>
-                          </div>
+                        </div>
+                        <div className="d-flex justify-content-between px-3 order-details">
+                          <p className="mb-5">
+                            Subtotal
+                          </p>
+                          <p className="mb-5">
+                            $ {Number(order.subtotal).toFixed(2)}
+                          </p>
+                        </div>
+                        <div className="d-flex justify-content-between px-3 order-details">
+                          <p className="mb-5">
+                            Delivery fee
+                          </p>
+                          <p className="mb-5">
+                            $ {Number(order.restaurant.delivery_fee).toFixed(2)}
+                          </p>
+                        </div>
+                        <div className="order-total d-flex justify-content-between px-3">
+                          <p>
+                            <b>Total</b>
+                          </p>
+                          <p>
+                            <b>$ {this.getTotal(order.subtotal, order.restaurant.delivery_fee)}</b>
+                          </p>
                         </div>
                       </div>
                   </div>

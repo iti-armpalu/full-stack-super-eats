@@ -3,5 +3,6 @@ class AddAttributesToOrdersPositions < ActiveRecord::Migration[6.1]
     add_column :orders_positions, :quantity, :integer
     add_belongs_to :orders_positions, :food, index: true, foreign_key: true
     add_belongs_to :orders_positions, :restaurant, index: true, foreign_key: true
+    add_belongs_to :orders_positions, :user, index: true, foreign_key: true
   end
 end

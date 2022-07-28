@@ -2,13 +2,17 @@ module Api
   class OrdersController < ApplicationController
 
     def create
+
+      # Get autheticated user
       token = cookies.signed[:supereats_session_token]
       session = Session.find_by(token: token)
       return render json: { error: 'User not logged in' }, status: :unauthorized if !session
 
+      # Get the current restaurant
       restaurant = Restaurant.find_by(id: params[:order][:restaurant_id])
       return render json: { error: 'Cannot find restaurant' }, status: :not_found if !restaurant
 
+      # Get a random user, whose attribute delivery_partener is true
       count = User.where(delivery_partner: true).count
       random_offset = rand(count)
       delivery_user = User.offset(random_offset).first
@@ -51,7 +55,7 @@ module Api
     private
 
     def order_params
-      params.require(:order).permit(:restaurant_id, :subtotal)
+      params.require(:order).permit(:user_id, :restaurant_id, status, :subtotal)
     end
 
   end
