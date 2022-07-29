@@ -16,7 +16,6 @@ Major features include:
 - Feature 2 - Restaurants menu page for the user to see menu items of the restaurant and to pick the items they want to order
 - Feature 3 - Cart and checkout for the user to see the selection and total bill before checkout, they can remove items from the cart if they want to, then they will finalize the order with Stripe payment
 
-
 3 - *--- Installation instructions ---*
 - "rails db:migrate" - to run the migrations
 - "rails db:seed" - to run the db/seed.rb file which includes seeded data
@@ -38,7 +37,7 @@ Challenge 2 - adding too many new features that I don't know how they work and/o
 Learning - keep the project 80% of what you know and 20% learn something new while building the project, this way you can practice what you already know, ad at the same time learn some new bits here and there, but the new learnigs don't become overwhelming. Again, planning stage will be helpful.
 
 7 - *--- Video demo ---*
-Link to Loom here:
+Link to Loom here: https://www.loom.com/share/b886e5550d8f478dacc1ab86b005f559
 
 8 - *--- App demo ---*
 Link to Heroku here: https://full-stack-super-eats.herokuapp.com/
