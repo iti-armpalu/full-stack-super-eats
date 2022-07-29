@@ -6,5 +6,5 @@ class OrdersPosition < ApplicationRecord
   validates :food, presence: true
   validates :restaurant, presence: true
   validates :user, presence: true
-  validates :quantity, presence: true
+  # validates :quantity, presence: true
 end

@@ -21,8 +21,8 @@ class Basket extends React.Component {
   increaseQuantity = (e, id) => {
     e.preventDefault();
 
-    let currentQuantityEl = document.querySelector('.item-qty')
-    let currentQuantity = Number(currentQuantityEl.innerHTML)
+    let increaseBtnEl = e.currentTarget
+    let currentQuantity = Number(increaseBtnEl.previousSibling.innerHTML)
     let addQuantity = currentQuantity + 1
 
     fetch(`/api/orders_positions/${id}`, safeCredentials({
@@ -49,8 +49,8 @@ class Basket extends React.Component {
   decreaseQuantity = (e, id) => {
     e.preventDefault();
 
-    let currentQuantityEl = document.querySelector('.item-qty')
-    let currentQuantity = Number(currentQuantityEl.innerHTML)
+    let decreaseBtnEl = e.currentTarget
+    let currentQuantity = Number(decreaseBtnEl.nextSibling.innerHTML)
     let removeQuantity = currentQuantity - 1
 
     if (removeQuantity < 1) {
@@ -198,8 +198,7 @@ class Basket extends React.Component {
             {orderPositions.map( (item) => {
               return (
                 <div 
-                  key={item.id} 
-                  id={item.id} 
+                  key={item.id}
                   className="row gx-0 d-flex justify-content-end align-items-center text-center mt-20 mb-20">
                     <div className="col">
                       <p className="text-start ml-10">
@@ -216,10 +215,12 @@ class Basket extends React.Component {
                         onClick={(e) => {this.decreaseQuantity(e, item.id);}}>
                           <FontAwesomeIcon icon={faMinus} />
                       </button>
-                      <p className="item-qty mx-2">
+                      <p data-id={`item-qty${item.id}`} id={`item-qty${item.id}`} className='item-qty mx-2'>
                         {item.quantity}
                       </p>
-                      <button type="button"
+                      <button 
+                        type="button"
+                        id={`${item.id}`}
                         onClick={ (e) => {this.increaseQuantity(e, item.id);}}>
                           <FontAwesomeIcon icon={faPlus} />
                       </button>
